@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Catalog Movie</string>
+    <string name="tv_movies">Movies</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="tv_favorite">Favorite</string>
+    <string name="search_title">Search title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello Movie fragment</string>
+    <string name="movie_fragment">Movie Fragment</string>
+    <string name="tvshow_fragment">Tv Show Fragment</string>
+    <string name="title_favorite">favorite</string>
+    <string name="hello_show_fragment">Hello Show Fragment</string>
 </resources>

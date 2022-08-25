@@ -4,15 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <FrameLayout
+            android:id="@+id/toolbar_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.miguelcatalan.materialsearchview.MaterialSearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:hint="@string/search_title"
+                android:textColorHint="@android:color/darker_gray"/>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="?attr/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+        </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container_fragment"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@id/appbar_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/bottom_nav"
+        android:padding="8dp"
+        android:elevation="10dp"
+        app:bnc_mode="spread"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content">
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/btn_movies"
+            app:bt_active="true"
+            app:bt_colorActive="@android:color/darker_gray"
+            app:bt_colorInactive="@android:color/darker_gray"
+            app:bt_title="@string/tv_movies"
+            app:bt_shape="@drawable/bg_nav"
+            app:bt_icon="@drawable/ic_baseline_local_movies_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/tv_favorite"
+            app:layout_constraintStart_toEndOf="@id/tv_show"/>
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/tv_show"
+            app:bt_active="false"
+            app:bt_colorActive="@android:color/darker_gray"
+            app:bt_colorInactive="@android:color/darker_gray"
+            app:bt_icon="@drawable/ic_baseline_live_tv_24"
+            app:bt_title="@string/tv_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_shape="@drawable/bg_nav"
+            app:layout_constraintEnd_toStartOf="@id/btn_movies"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/tv_favorite"
+            app:bt_active="false"
+            app:bt_colorActive="@android:color/darker_gray"
+            app:bt_colorInactive="@android:color/darker_gray"
+            app:bt_icon="@drawable/ic_baseline_favorite_24"
+            app:bt_shape="@drawable/bg_nav"
+            app:bt_title="@string/tv_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/btn_movies"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
