@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepositoryInterface {
     fun getMovies(): Flow<Resource<List<DomainModel>>>
+    fun getTvShow(): Flow<Resource<List<DomainModel>>>
 }

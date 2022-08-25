@@ -16,11 +16,17 @@ data class TvShowResponseItem(
 	@field:SerializedName("overview")
 	val overview: String,
 
+	@field:SerializedName("backdrop_path")
+	val backdropPath: String,
+
 	@field:SerializedName("original_language")
 	val originalLanguage: String,
 
 	@field:SerializedName("popularity")
 	val popularity: Double,
+
+	@field:SerializedName("original_name")
+	val originalTitle: String,
 
 	@field:SerializedName("vote_average")
 	val voteAverage: Double,

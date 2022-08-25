@@ -8,4 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 class RepositoryInteract(private val repository: RepositoryInterface): UseCase {
     override fun getMovies(): Flow<Resource<List<DomainModel>>> = repository.getMovies()
+    override fun getTvShow(): Flow<Resource<List<DomainModel>>> = repository.getTvShow()
 }

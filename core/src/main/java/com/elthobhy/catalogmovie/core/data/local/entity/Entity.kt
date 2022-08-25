@@ -39,4 +39,7 @@ data class Entity (
 
     @ColumnInfo(name = "original_title")
     val originalTitle: String,
+
+    @ColumnInfo(name = "isTvShow")
+    var isTvShow: Boolean = false
 )

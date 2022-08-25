@@ -5,6 +5,7 @@ import com.elthobhy.catalogmovie.core.data.remote.networking.ApiResponse
 import com.elthobhy.catalogmovie.core.data.remote.networking.ApiService
 import com.elthobhy.catalogmovie.core.data.remote.response.MovieResponse
 import com.elthobhy.catalogmovie.core.data.remote.response.MovieResponseItem
+import com.elthobhy.catalogmovie.core.data.remote.response.TvShowResponseItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -29,4 +30,21 @@ class RemoteDataSource {
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun getTvShow(): Flow<ApiResponse<List<TvShowResponseItem>>> {
+        return flow {
+            try {
+                val response = ApiConfig.getApiService().getTvShows(apiKey)
+                val list = response.results
+                if(list.isNotEmpty()){
+                    emit(ApiResponse.Success(list))
+                }else{
+                    emit(ApiResponse.Empty)
+                }
+            }catch (e: Exception){
+                emit(ApiResponse.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
 }
