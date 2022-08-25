@@ -10,5 +10,10 @@
     <string name="tvshow_fragment">Tv Show Fragment</string>
     <string name="title_favorite">favorite</string>
     <string name="hello_show_fragment">Hello Show Fragment</string>
+    <string name="image_backdrop">Image Backdrop</string>
+    <string name="fab_favorite">Fab Favorite</string>
+    <string name="release_date">Release Date</string>
+    <string name="overview">Overview</string>
+    <string name="detail">Detail</string>
 
 </resources>

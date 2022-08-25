@@ -12,8 +12,10 @@ import com.elthobhy.catalogmovie.core.utils.Constants
 
 class AdapterList: ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBACK) {
 
+    var onItemClick: ((DomainModel) -> Unit)? = null
+
     inner class ViewHolder(private val binding: ItemListBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(item: DomainModel?) {
+        fun bind(item: DomainModel?, position: Int) {
             with(binding){
                 title.text = item?.title
                 roundImage.let {
@@ -29,6 +31,9 @@ class AdapterList: ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBAC
                 }
                 tvOriginalTitle.text = item?.original_title
                 tvOverview.text = item?.overview
+                itemView.setOnClickListener {
+                    onItemClick?.invoke(getItem(position))
+                }
             }
         }
 
@@ -40,7 +45,7 @@ class AdapterList: ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBAC
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        return holder.bind(getItem(position))
+        return holder.bind(getItem(position), position)
     }
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DomainModel>() {

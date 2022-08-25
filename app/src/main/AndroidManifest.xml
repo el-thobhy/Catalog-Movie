@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.elthobhy.catalogmovie">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApp"
@@ -17,6 +17,9 @@
         android:theme="@style/Theme.CatalogMovie"
         tools:targetApi="31">
         <activity
+            android:name=".detail.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -26,5 +29,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>

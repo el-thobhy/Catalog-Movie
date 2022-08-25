@@ -1,5 +1,6 @@
 package com.elthobhy.catalogmovie.tvshow
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,7 +13,9 @@ import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.core.data.Resource
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.ui.AdapterList
+import com.elthobhy.catalogmovie.core.utils.Constants
 import com.elthobhy.catalogmovie.databinding.FragmentTvshowBinding
+import com.elthobhy.catalogmovie.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -40,22 +43,26 @@ class TvshowFragment : Fragment() {
             setHasFixedSize(true)
             adapter = adapterList
         }
+        adapterList.onItemClick = {
+            val intent = Intent(activity, DetailActivity::class.java)
+            intent.putExtra(Constants.DATA, it)
+            startActivity(intent)
+        }
     }
 
     private fun setList() {
-        tvShowViewModel.getTvShow().observe(viewLifecycleOwner, tvShowObserver)
-    }
-    private val tvShowObserver = Observer<Resource<List<DomainModel>>> {
-        if(it != null){
-            when (it){
-                is Resource.Loading -> {
+        tvShowViewModel.getTvShow().observe(viewLifecycleOwner){
+            if(it != null){
+                when (it){
+                    is Resource.Loading -> {
 
-                }
-                is Resource.Success -> {
-                    adapterList.submitList(it.data)
-                }
-                is Resource.Error -> {
-                    Log.e("movieFragment", "setList: ${it.message}" )
+                    }
+                    is Resource.Success -> {
+                        adapterList.submitList(it.data)
+                    }
+                    is Resource.Error -> {
+                        Log.e("movieFragment", "setList: ${it.message}" )
+                    }
                 }
             }
         }
