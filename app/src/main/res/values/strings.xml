@@ -10,4 +10,5 @@
     <string name="tvshow_fragment">Tv Show Fragment</string>
     <string name="title_favorite">favorite</string>
     <string name="hello_show_fragment">Hello Show Fragment</string>
+
 </resources>

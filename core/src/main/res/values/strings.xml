@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="image_poster">Image poster</string>
+    <string name="star">star</string>
+    <string name="star_count">Star count</string>
+    <string name="image_popularity">Image Popularity</string>
+    <string name="image_vote">Image Vote</string>
+    <string name="vote_count">Vote Count</string>
+    <string name="popularity_count">Popularity Count</string>
+    <string name="original_title">Original Title</string>
+    <string name="lorem">Lorem ipsum sit dolor amet</string>
+</resources>
