@@ -7,6 +7,7 @@ import com.elthobhy.catalogmovie.core.data.local.room.Database
 import com.elthobhy.catalogmovie.core.data.remote.RemoteDataSource
 import com.elthobhy.catalogmovie.core.data.remote.networking.ApiConfig
 import com.elthobhy.catalogmovie.core.domain.repository.RepositoryInterface
+import com.elthobhy.catalogmovie.core.utils.AppExecutors
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -17,7 +18,8 @@ val networking = module {
 val repository = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource() }
-    single<RepositoryInterface> { Repository(get(), get()) }
+    factory { AppExecutors() }
+    single<RepositoryInterface> { Repository(get(), get(), get()) }
 }
 val database = module {
     factory { get<Database>().dao() }

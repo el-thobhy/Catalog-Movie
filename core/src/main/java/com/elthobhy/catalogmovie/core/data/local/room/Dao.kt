@@ -1,9 +1,7 @@
 package com.elthobhy.catalogmovie.core.data.local.room
 
+import androidx.room.*
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import com.elthobhy.catalogmovie.core.data.local.entity.Entity
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +13,12 @@ interface Dao {
     @Query("SELECT * FROM entity WHERE isTvShow = 1")
     fun getTvShow(): Flow<List<Entity>>
 
+    @Query("SELECT * FROM entity WHERE isTvShow = 0 AND isFavorite = 1")
+    fun getFavoriteMovie(): Flow<List<Entity>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entity: List<Entity>)
+
+    @Update
+    fun updateFavoriteMovie(movie: Entity)
 }

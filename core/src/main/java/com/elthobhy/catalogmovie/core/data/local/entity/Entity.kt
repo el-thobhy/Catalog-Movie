@@ -41,5 +41,8 @@ data class Entity (
     val originalTitle: String,
 
     @ColumnInfo(name = "isTvShow")
-    var isTvShow: Boolean = false
+    var isTvShow: Boolean = false,
+
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean = false
 )

@@ -1,5 +1,6 @@
 package com.elthobhy.catalogmovie.core.utils
 
+import androidx.lifecycle.LiveData
 import com.elthobhy.catalogmovie.core.data.local.entity.Entity
 import com.elthobhy.catalogmovie.core.data.remote.response.MovieResponseItem
 import com.elthobhy.catalogmovie.core.data.remote.response.TvShowResponseItem
@@ -26,6 +27,23 @@ object DataMapper {
             output.add(list)
         }
         return output
+    }
+
+    fun mapDomainToEntity(input: DomainModel): Entity{
+        return Entity(
+                title = input.title,
+                voteCount = input.voteCount,
+                voteAverage = input.voteAverage,
+                releaseDate = input.releaseDate,
+                posterPath = input.posterPath,
+                popularity = input.popularity,
+                overview = input.overview,
+                id = input.id,
+                isTvShow = false,
+                originalTitle = input.original_title,
+                backdrop_path = input.backdrop_path,
+                originalLanguage = input.originalLanguage,
+        )
     }
 
     fun mapShowResponseToEntity(input: List<TvShowResponseItem>): List<Entity> {
@@ -63,7 +81,9 @@ object DataMapper {
                 original_title = it.originalTitle,
                 popularity = it.popularity,
                 overview = it.overview,
+                isTvShows = it.isTvShow,
                 id = it.id,
+                favorite = it.isFavorite,
                 originalLanguage = it.originalLanguage,
             )
             output.add(list)

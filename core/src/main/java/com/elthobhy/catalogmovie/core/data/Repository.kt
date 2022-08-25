@@ -7,13 +7,15 @@ import com.elthobhy.catalogmovie.core.data.remote.response.MovieResponseItem
 import com.elthobhy.catalogmovie.core.data.remote.response.TvShowResponseItem
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.domain.repository.RepositoryInterface
+import com.elthobhy.catalogmovie.core.utils.AppExecutors
 import com.elthobhy.catalogmovie.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class Repository(
     private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val appExecutors: AppExecutors
 ) : RepositoryInterface {
     override fun getMovies(): Flow<Resource<List<DomainModel>>> =
         object : NetworkBoundResource<List<DomainModel>, List<MovieResponseItem>>() {
@@ -54,4 +56,16 @@ class Repository(
                 return localDataSource.insert(dataMap)
             }
         }.asFlow()
+
+    override fun getFavoriteMovies(): Flow<List<DomainModel>> {
+        return localDataSource.getFavoriteMovie().map {
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
+
+    override fun setFavoriteMovies(movie: DomainModel, state: Boolean) {
+        val entity = DataMapper.mapDomainToEntity(movie)
+        appExecutors.diskIO().execute{ localDataSource.setFavoriteMovie(entity, state) }
+    }
+
 }
