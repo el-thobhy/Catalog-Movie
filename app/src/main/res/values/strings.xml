@@ -15,5 +15,6 @@
     <string name="release_date">Release Date</string>
     <string name="overview">Overview</string>
     <string name="detail">Detail</string>
+    <string name="search">Search</string>
 
 </resources>

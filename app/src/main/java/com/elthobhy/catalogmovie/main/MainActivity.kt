@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
         navigationChange(MovieFragment())
         binding.bottomNav.setNavigationChangeListener { _, position ->
             when (position) {
