@@ -1,7 +1,6 @@
 package com.elthobhy.catalogmovie.core.domain.repository
 
 import com.elthobhy.catalogmovie.core.data.Resource
-import com.elthobhy.catalogmovie.core.data.local.entity.Entity
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import kotlinx.coroutines.flow.Flow
 

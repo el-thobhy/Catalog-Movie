@@ -9,5 +9,4 @@ import com.elthobhy.catalogmovie.core.domain.usecase.UseCase
 class FavoriteViewModel(private val useCase: UseCase): ViewModel() {
     fun getFavoriteMovie(): LiveData<List<DomainModel>> = useCase.getFavoriteMovie().asLiveData()
     fun getFavoriteTvShow(): LiveData<List<DomainModel>> = useCase.getFavoriteTvShow().asLiveData()
-    fun setFavorite(movie: DomainModel, state: Boolean) = useCase.setFavoriteMovie(movie, state)
 }

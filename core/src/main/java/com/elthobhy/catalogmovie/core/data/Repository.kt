@@ -44,7 +44,7 @@ class Repository(
             }
 
             override fun shouldFetch(data: List<DomainModel>?): Boolean {
-                return data == null || data.isEmpty()
+                return true
             }
 
             override suspend fun createCall(): Flow<ApiResponse<List<TvShowResponseItem>>> {

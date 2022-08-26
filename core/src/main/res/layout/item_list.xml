@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:riv_corner_radius="20dp"
         android:layout_margin="10dp"
-        android:src="@drawable/bird_thumbnail"
+        android:src="@mipmap/bird_thumbnail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -1,6 +1,5 @@
 package com.elthobhy.catalogmovie.core.utils
 
-import androidx.lifecycle.LiveData
 import com.elthobhy.catalogmovie.core.data.local.entity.Entity
 import com.elthobhy.catalogmovie.core.data.remote.response.MovieResponseItem
 import com.elthobhy.catalogmovie.core.data.remote.response.TvShowResponseItem
