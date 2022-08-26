@@ -39,10 +39,7 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        val toolbar: Toolbar = activity?.findViewById<View>(R.id.toolbar) as Toolbar
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        setOptionMenu()
-        searchView = (activity as MainActivity).findViewById(R.id.search_view)
+        initToolbar()
         return binding.root
     }
 
@@ -52,6 +49,13 @@ class MovieFragment : Fragment() {
         setList()
         searchList()
         showRv()
+    }
+
+    private fun initToolbar() {
+        val toolbar: Toolbar = activity?.findViewById<View>(R.id.toolbar) as Toolbar
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        setOptionMenu()
+        searchView = (activity as MainActivity).findViewById(R.id.search_view)
     }
 
     private fun setOptionMenu() {
