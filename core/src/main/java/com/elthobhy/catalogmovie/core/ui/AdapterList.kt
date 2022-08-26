@@ -23,7 +23,7 @@ class AdapterList : ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBA
     }
     inner class ViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: DomainModel, position: Int) {
+        fun bind(item: DomainModel) {
             binding.apply {
                 title.text = item.title
                 Glide.with(itemView)
@@ -52,7 +52,7 @@ class AdapterList : ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBA
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        return holder.bind(getItem(position), position)
+        return holder.bind(getItem(position))
     }
 
     companion object {

@@ -1,5 +1,6 @@
 package com.elthobhy.catalogmovie.core.data.remote
 
+import android.util.Log
 import com.elthobhy.catalogmovie.core.data.remote.networking.ApiConfig
 import com.elthobhy.catalogmovie.core.data.remote.networking.ApiResponse
 import com.elthobhy.catalogmovie.core.data.remote.response.MovieResponseItem
@@ -40,6 +41,7 @@ class RemoteDataSource {
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
+                Log.e("remote", "getTvShow: ${e.message}" )
             }
         }.flowOn(Dispatchers.IO)
     }

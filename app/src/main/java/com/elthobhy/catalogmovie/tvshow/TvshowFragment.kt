@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityOptionsCompat
@@ -18,6 +19,8 @@ import com.elthobhy.catalogmovie.core.databinding.ItemListBinding
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.ui.AdapterList
 import com.elthobhy.catalogmovie.core.utils.Constants
+import com.elthobhy.catalogmovie.core.utils.showDialogError
+import com.elthobhy.catalogmovie.core.utils.showDialogLoading
 import com.elthobhy.catalogmovie.databinding.FragmentTvshowBinding
 import com.elthobhy.catalogmovie.detail.DetailActivity
 import com.elthobhy.catalogmovie.main.MainActivity
@@ -37,6 +40,8 @@ class TvshowFragment : Fragment() {
     private val tvShowViewModel: TvShowViewModel by viewModel()
     private val searchViewModel: SearchViewModel by viewModel()
     private lateinit var searchView: MaterialSearchView
+    private lateinit var dialogError: AlertDialog
+    private lateinit var dialogLoading: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +55,8 @@ class TvshowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapterList = AdapterList()
+        dialogError = showDialogError(requireContext())
+        dialogLoading = showDialogLoading(requireContext())
         setList()
         showRv()
         searchList()
@@ -125,11 +132,18 @@ class TvshowFragment : Fragment() {
         tvShowViewModel.getTvShow().observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
-                    is Resource.Loading -> {}
+                    is Resource.Loading -> {
+                        dialogLoading.show()
+                    }
                     is Resource.Success -> {
+                        dialogLoading.dismiss()
                         adapterList.submitList(it.data)
                     }
-                    is Resource.Error -> {}
+                    is Resource.Error -> {
+                        dialogError = showDialogError(requireContext(), it.message)
+                        dialogError.show()
+                        dialogLoading.dismiss()
+                    }
                 }
             }
         }
@@ -152,5 +166,7 @@ class TvshowFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        dialogLoading.dismiss()
+        dialogError.dismiss()
     }
 }
