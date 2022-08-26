@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
 
-    private var _binding : FragmentMovieBinding? = null
+    private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding as FragmentMovieBinding
     private val movieViewModel: MovieViewModel by viewModel()
     private lateinit var adapterList: AdapterList
@@ -41,7 +41,7 @@ class MovieFragment : Fragment() {
             adapter = adapterList
         }
         adapterList.onItemClick = {
-            val intent = Intent(activity,DetailActivity::class.java)
+            val intent = Intent(activity, DetailActivity::class.java)
             intent.putExtra(Constants.DATA, it)
             startActivity(intent)
 
@@ -49,9 +49,9 @@ class MovieFragment : Fragment() {
     }
 
     private fun setList() {
-        movieViewModel.getMovies().observe(viewLifecycleOwner){
-            if(it != null){
-                when (it){
+        movieViewModel.getMovies().observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
                     is Resource.Loading -> {
 
                     }
@@ -59,7 +59,7 @@ class MovieFragment : Fragment() {
                         adapterList.submitList(it.data)
                     }
                     is Resource.Error -> {
-                        Log.e("movieFragment", "setList: ${it.message}" )
+                        Log.e("movieFragment", "setList: ${it.message}")
                     }
                 }
             }

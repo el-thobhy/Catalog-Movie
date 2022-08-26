@@ -13,16 +13,16 @@ class RemoteDataSource {
     private val apiKey = "dccd44dbfc2c7c82f7c3b46080a96b16"
 
     suspend fun getMovies(): Flow<ApiResponse<List<MovieResponseItem>>> {
-       return flow {
+        return flow {
             try {
                 val response = ApiConfig.getApiService().getMovies(apiKey)
                 val list = response.results
-                if(list.isNotEmpty()){
+                if (list.isNotEmpty()) {
                     emit(ApiResponse.Success(list))
-                }else{
+                } else {
                     emit(ApiResponse.Empty)
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
             }
         }.flowOn(Dispatchers.IO)
@@ -33,12 +33,12 @@ class RemoteDataSource {
             try {
                 val response = ApiConfig.getApiService().getTvShows(apiKey)
                 val list = response.results
-                if(list.isNotEmpty()){
+                if (list.isNotEmpty()) {
                     emit(ApiResponse.Success(list))
-                }else{
+                } else {
                     emit(ApiResponse.Empty)
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
             }
         }.flowOn(Dispatchers.IO)

@@ -9,165 +9,177 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar_layout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
-        </com.google.android.material.appbar.AppBarLayout>
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/image_backdrop"
-            app:layout_constraintTop_toBottomOf="@id/appbar_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/title_detail"
-            android:contentDescription="@string/image_backdrop"
-            android:src="@mipmap/bird_thumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/title_detail"
-            app:layout_constraintTop_toBottomOf="@id/image_backdrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/fab_favorite"
-            android:layout_margin="20dp"
-            android:textSize="20sp"
-            android:text="@string/title"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_favorite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/title_detail"
-            app:layout_constraintBottom_toBottomOf="@id/title_detail"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/ic_baseline_bookmark_border_24"
-            android:contentDescription="@string/fab_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/tv_releaseDate"
-            app:layout_constraintTop_toBottomOf="@id/title_detail"
-            app:layout_constraintStart_toStartOf="@id/title_detail"
-            android:text="@string/release_date"
-            android:textSize="12sp"
-            android:fontFamily="@font/poppins_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
         <ImageView
             android:id="@+id/image_vote"
-            android:src="@drawable/ic_baseline_how_to_vote_24"
-            app:layout_constraintTop_toTopOf="@id/view_background"
-            app:layout_constraintStart_toStartOf="@id/view_background"
-            app:layout_constraintEnd_toStartOf="@id/image_popular"
-            android:contentDescription="@string/image_vote"
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/image_vote"
+            android:src="@drawable/ic_baseline_how_to_vote_24"
+            app:layout_constraintEnd_toStartOf="@id/image_popular"
+            app:layout_constraintStart_toStartOf="@id/view_background"
+            app:layout_constraintTop_toTopOf="@id/view_background" />
+
         <ImageView
             android:id="@+id/image_popular"
-            android:src="@drawable/ic_baseline_thumb_up_24"
-            app:layout_constraintTop_toTopOf="@id/image_vote"
-            app:layout_constraintBottom_toBottomOf="@id/image_vote"
-            app:layout_constraintStart_toEndOf="@id/image_vote"
-            app:layout_constraintEnd_toStartOf="@id/image_star"
-            android:contentDescription="@string/image_popularity"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_popularity"
+            android:src="@drawable/ic_baseline_thumb_up_24"
+            app:layout_constraintBottom_toBottomOf="@id/image_vote"
+            app:layout_constraintEnd_toStartOf="@id/image_star"
+            app:layout_constraintStart_toEndOf="@id/image_vote"
+            app:layout_constraintTop_toTopOf="@id/image_vote" />
+
         <ImageView
             android:id="@+id/image_star"
-            android:src="@drawable/ic_baseline_star_24"
-            app:layout_constraintStart_toEndOf="@+id/image_popular"
-            app:layout_constraintEnd_toEndOf="@id/view_background"
-            app:layout_constraintTop_toTopOf="@id/image_vote"
-            app:layout_constraintBottom_toBottomOf="@id/image_vote"
-            android:contentDescription="@string/star"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/star"
+            android:src="@drawable/ic_baseline_star_24"
+            app:layout_constraintBottom_toBottomOf="@id/image_vote"
+            app:layout_constraintEnd_toEndOf="@id/view_background"
+            app:layout_constraintStart_toEndOf="@+id/image_popular"
+            app:layout_constraintTop_toTopOf="@id/image_vote" />
+
+        <TextView
+            android:id="@+id/title_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/title"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/fab_favorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_backdrop" />
+
+        <TextView
+            android:id="@+id/tv_releaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/release_date"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/title_detail"
+            app:layout_constraintTop_toBottomOf="@id/title_detail" />
+
         <TextView
             android:id="@+id/vote_count"
-            app:layout_constraintStart_toStartOf="@id/image_vote"
-            app:layout_constraintTop_toBottomOf="@id/image_vote"
-            app:layout_constraintEnd_toEndOf="@id/image_vote"
-            android:text="@string/vote_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/vote_count"
             android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintEnd_toEndOf="@id/image_vote"
+            app:layout_constraintStart_toStartOf="@id/image_vote"
+            app:layout_constraintTop_toBottomOf="@id/image_vote" />
+
         <TextView
             android:id="@+id/popular_count"
-            android:text="@string/popularity_count"
-            app:layout_constraintStart_toStartOf="@id/image_popular"
-            app:layout_constraintEnd_toEndOf="@id/image_popular"
-            app:layout_constraintTop_toBottomOf="@id/image_popular"
-            android:layout_marginTop="10dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/poppins_light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/popularity_count"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/image_popular"
+            app:layout_constraintStart_toStartOf="@id/image_popular"
+            app:layout_constraintTop_toBottomOf="@id/image_popular" />
+
         <TextView
             android:id="@+id/star_count"
-            android:text="@string/star_count"
-            app:layout_constraintStart_toStartOf="@id/image_star"
-            app:layout_constraintEnd_toEndOf="@id/image_star"
-            app:layout_constraintTop_toBottomOf="@id/image_star"
-            android:layout_marginTop="10dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/poppins_light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <View
-            android:id="@+id/view_background"
-            app:layout_constraintTop_toBottomOf="@id/tv_releaseDate"
-            app:layout_constraintStart_toStartOf="@id/image_backdrop"
-            app:layout_constraintEnd_toEndOf="@id/image_backdrop"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:background="@drawable/bg_count"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/star_count"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/image_star"
+            app:layout_constraintStart_toStartOf="@id/image_star"
+            app:layout_constraintTop_toBottomOf="@id/image_star" />
 
         <TextView
             android:id="@+id/tv_overview"
-            app:layout_constraintTop_toBottomOf="@id/view_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="@string/overview"
             android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_background" />
 
         <TextView
             android:id="@+id/overview_detail"
-            app:layout_constraintTop_toBottomOf="@id/tv_overview"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="20dp"
-            android:fontFamily="@font/poppins_light"
-            android:textSize="12sp"
-            android:text="@string/lorem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:paddingBottom="20dp"
+            android:text="@string/lorem"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_overview" />
 
+        <View
+            android:id="@+id/view_background"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_count"
+            app:layout_constraintEnd_toEndOf="@id/image_backdrop"
+            app:layout_constraintStart_toStartOf="@id/image_backdrop"
+            app:layout_constraintTop_toBottomOf="@id/tv_releaseDate" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/fab_favorite"
+            android:src="@drawable/ic_baseline_bookmark_border_24"
+            app:layout_constraintBottom_toBottomOf="@id/title_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_detail" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image_backdrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_backdrop"
+            android:src="@mipmap/bird_thumbnail"
+            app:layout_constraintBottom_toTopOf="@id/title_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </ScrollView>

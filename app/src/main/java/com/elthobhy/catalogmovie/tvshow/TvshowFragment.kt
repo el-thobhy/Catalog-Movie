@@ -34,7 +34,7 @@ class TvshowFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapterList = AdapterList()
         setList()
-        with(binding.rvShow){
+        with(binding.rvShow) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
             adapter = adapterList
@@ -47,9 +47,9 @@ class TvshowFragment : Fragment() {
     }
 
     private fun setList() {
-        tvShowViewModel.getTvShow().observe(viewLifecycleOwner){
-            if(it != null){
-                when (it){
+        tvShowViewModel.getTvShow().observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
                     is Resource.Loading -> {
 
                     }
@@ -57,7 +57,7 @@ class TvshowFragment : Fragment() {
                         adapterList.submitList(it.data)
                     }
                     is Resource.Error -> {
-                        Log.e("movieFragment", "setList: ${it.message}" )
+                        Log.e("movieFragment", "setList: ${it.message}")
                     }
                 }
             }

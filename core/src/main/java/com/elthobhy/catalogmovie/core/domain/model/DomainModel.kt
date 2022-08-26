@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class DomainModel (
+data class DomainModel(
     var overview: String,
     var originalLanguage: String,
     var original_title: String,
@@ -18,4 +18,4 @@ data class DomainModel (
     var posterPath: String,
     var favorite: Boolean = false,
     var isTvShows: Boolean = false
-): Parcelable
+) : Parcelable

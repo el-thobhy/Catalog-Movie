@@ -10,27 +10,27 @@ import com.elthobhy.catalogmovie.core.databinding.ItemListBinding
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.utils.Constants
 
-class AdapterList: ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBACK) {
+class AdapterList : ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBACK) {
 
     var onItemClick: ((DomainModel) -> Unit)? = null
 
-    inner class ViewHolder(private val binding: ItemListBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(item: DomainModel?, position: Int) {
-            with(binding){
-                title.text = item?.title
-                posterImage.let {
-                    Glide.with(itemView)
-                        .load(Constants.IMAGE_LINK + item?.backdrop_path)
-                        .into(posterImage)
-                }
-                tvDate.text = item?.releaseDate
-                roundImage.let {
-                    Glide.with(itemView)
-                        .load(Constants.IMAGE_LINK + item?.posterPath)
-                        .into(roundImage)
-                }
-                tvOriginalTitle.text = item?.original_title
-                tvOverview.text = item?.overview
+    inner class ViewHolder(private val binding: ItemListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: DomainModel, position: Int) {
+            binding.apply {
+                title.text = item.title
+                Glide.with(itemView)
+                    .load(Constants.IMAGE_LINK + item.backdrop_path)
+                    .into(posterImage)
+
+                tvDate.text = item.releaseDate
+
+                Glide.with(itemView.context)
+                    .load(Constants.IMAGE_LINK + item.posterPath)
+                    .into(roundImage)
+
+                tvOriginalTitle.text = item.original_title
+                tvOverview.text = item.overview
                 itemView.setOnClickListener {
                     onItemClick?.invoke(getItem(position))
                 }
@@ -47,6 +47,7 @@ class AdapterList: ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBAC
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         return holder.bind(getItem(position), position)
     }
+
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DomainModel>() {
             override fun areItemsTheSame(oldItem: DomainModel, newItem: DomainModel): Boolean {

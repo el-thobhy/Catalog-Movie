@@ -46,7 +46,7 @@ class FavoriteTvShowFragment : Fragment() {
     }
 
     private fun setList() {
-        favoriteViewModel.getFavoriteTvShow().observe(viewLifecycleOwner){
+        favoriteViewModel.getFavoriteTvShow().observe(viewLifecycleOwner) {
             adapterList.submitList(it)
         }
     }

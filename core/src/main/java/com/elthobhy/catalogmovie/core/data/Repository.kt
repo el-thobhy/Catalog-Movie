@@ -71,7 +71,7 @@ class Repository(
 
     override fun setFavoriteMovies(movie: DomainModel, state: Boolean) {
         val entity = DataMapper.mapDomainToEntity(movie)
-        appExecutors.diskIO().execute{ localDataSource.setFavoriteMovie(entity, state) }
+        appExecutors.diskIO().execute { localDataSource.setFavoriteMovie(entity, state) }
     }
 
 }

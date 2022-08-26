@@ -1,13 +1,13 @@
 package com.elthobhy.catalogmovie.favorite
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.elthobhy.catalogmovie.favorite.databinding.FragmentFavoriteBinding
 import com.elthobhy.catalogmovie.di.favoriteModule
+import com.elthobhy.catalogmovie.favorite.databinding.FragmentFavoriteBinding
 import com.elthobhy.catalogmovie.favorite.viewpageradapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.core.context.loadKoinModules
@@ -34,7 +34,7 @@ class FavoriteFragment : Fragment() {
             R.string.tv_show,
         )
         val tabLayout = binding.tabLayout
-        TabLayoutMediator(tabLayout, binding.viewPager){ tab, position ->
+        TabLayoutMediator(tabLayout, binding.viewPager) { tab, position ->
             tab.text = context?.resources?.getString(tabTitle[position])
         }.attach()
         return binding.root

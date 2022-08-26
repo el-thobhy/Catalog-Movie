@@ -7,6 +7,6 @@ import com.elthobhy.catalogmovie.core.data.Resource
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.domain.usecase.UseCase
 
-class TvShowViewModel(private val useCase: UseCase): ViewModel() {
+class TvShowViewModel(private val useCase: UseCase) : ViewModel() {
     fun getTvShow(): LiveData<Resource<List<DomainModel>>> = useCase.getTvShow().asLiveData()
 }

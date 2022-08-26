@@ -31,14 +31,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigationToFavorite() {
         val fragment = featureFragment()
-        if (fragment != null){
+        if (fragment != null) {
             navigationChange(fragment)
         }
     }
 
     private fun featureFragment(): Fragment? {
         return try {
-            Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment").newInstance() as Fragment
+            Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment")
+                .newInstance() as Fragment
         } catch (e: Exception) {
             Toast.makeText(this, "module not found", Toast.LENGTH_SHORT).show()
             null

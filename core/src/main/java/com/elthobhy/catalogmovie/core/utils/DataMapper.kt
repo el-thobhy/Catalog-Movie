@@ -29,21 +29,21 @@ object DataMapper {
         return output
     }
 
-    fun mapDomainToEntity(input: DomainModel): Entity{
+    fun mapDomainToEntity(input: DomainModel): Entity {
         return Entity(
-                title = input.title,
-                voteCount = input.voteCount,
-                voteAverage = input.voteAverage,
-                releaseDate = input.releaseDate,
-                posterPath = input.posterPath,
-                popularity = input.popularity,
-                overview = input.overview,
-                id = input.id,
-                isTvShow = input.isTvShows,
-                isFavorite = input.favorite,
-                originalTitle = input.original_title,
-                backdrop_path = input.backdrop_path,
-                originalLanguage = input.originalLanguage,
+            title = input.title,
+            voteCount = input.voteCount,
+            voteAverage = input.voteAverage,
+            releaseDate = input.releaseDate,
+            posterPath = input.posterPath,
+            popularity = input.popularity,
+            overview = input.overview,
+            id = input.id,
+            isTvShow = input.isTvShows,
+            isFavorite = input.favorite,
+            originalTitle = input.original_title,
+            backdrop_path = input.backdrop_path,
+            originalLanguage = input.originalLanguage,
         )
     }
 

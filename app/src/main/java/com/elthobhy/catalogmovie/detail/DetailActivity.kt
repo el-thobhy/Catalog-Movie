@@ -21,7 +21,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val intent = intent.getParcelableExtra<DomainModel>(Constants.DATA)
-        if(intent != null){
+        if (intent != null) {
             showDetail(intent)
         }
         setSupportActionBar(binding.toolbar)
@@ -33,7 +33,7 @@ class DetailActivity : AppCompatActivity() {
     private fun showDetail(intent: DomainModel) {
         with(binding) {
             Glide.with(this@DetailActivity)
-                .load(Constants.IMAGE_LINK+ intent.backdrop_path)
+                .load(Constants.IMAGE_LINK + intent.backdrop_path)
                 .into(imageBackdrop)
             titleDetail.text = intent.title
             tvReleaseDate.text = intent.releaseDate
@@ -53,14 +53,14 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setFavoriteState(favorite: Boolean) {
-        if(favorite){
+        if (favorite) {
             binding.fabFavorite.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
                     R.drawable.ic_baseline_bookmark_24
                 )
             )
-        } else{
+        } else {
             binding.fabFavorite.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
