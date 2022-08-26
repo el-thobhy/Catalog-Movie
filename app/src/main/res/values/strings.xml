@@ -16,5 +16,6 @@
     <string name="overview">Overview</string>
     <string name="detail">Detail</string>
     <string name="search">Search</string>
+    <string name="splash_screen">Splash Screen</string>
 
 </resources>
