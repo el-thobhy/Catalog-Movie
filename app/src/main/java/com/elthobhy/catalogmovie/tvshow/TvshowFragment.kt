@@ -3,6 +3,7 @@ package com.elthobhy.catalogmovie.tvshow
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -138,6 +139,7 @@ class TvshowFragment : Fragment() {
                     is Resource.Success -> {
                         dialogLoading.dismiss()
                         adapterList.submitList(it.data)
+                        Log.e("tvshow", "setList: ${it.data}" )
                     }
                     is Resource.Error -> {
                         dialogError = showDialogError(requireContext(), it.message)

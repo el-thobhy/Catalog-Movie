@@ -50,22 +50,26 @@ object DataMapper {
     fun mapShowResponseToEntity(input: List<TvShowResponseItem>): List<Entity> {
         val output = ArrayList<Entity>()
         input.map {
-            val list = Entity(
-                title = it.name,
-                voteCount = it.voteCount,
-                voteAverage = it.voteAverage,
-                releaseDate = it.firstAirDate,
-                posterPath = it.posterPath,
-                popularity = it.popularity,
-                overview = it.overview,
-                id = it.id,
-                isTvShow = true,
-                isFavorite = false,
-                originalTitle = it.originalTitle,
-                backdrop_path = it.backdropPath,
-                originalLanguage = it.originalLanguage,
-            )
-            output.add(list)
+            val list = it.id?.let { it1 ->
+                Entity(
+                    title = it.name,
+                    voteCount = it.voteCount,
+                    voteAverage = it.voteAverage,
+                    releaseDate = it.firstAirDate,
+                    posterPath = it.posterPath,
+                    popularity = it.popularity,
+                    overview = it.overview,
+                    id = it1,
+                    isTvShow = true,
+                    isFavorite = false,
+                    originalTitle = it.originalTitle,
+                    backdrop_path = it.backdropPath,
+                    originalLanguage = it.originalLanguage,
+                )
+            }
+            if (list != null) {
+                output.add(list)
+            }
         }
         return output
     }

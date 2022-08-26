@@ -11,36 +11,36 @@ data class TvShowResponse(
 data class TvShowResponseItem(
 
     @field:SerializedName("first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String? = null,
 
     @field:SerializedName("overview")
-    val overview: String,
+    val overview: String? = null,
 
     @field:SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String? = null,
 
     @field:SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String? = null,
 
     @field:SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Double? = null,
 
     @field:SerializedName("original_name")
-    val originalTitle: String,
+    val originalTitle: String? = null,
 
     @field:SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double? = null,
 
     @field:SerializedName("name")
-    val name: String,
+    val name: String? = null,
 
     @field:SerializedName("id")
-    val id: Int,
+    val id: Int? = null,
 
     @field:SerializedName("vote_count")
-    val voteCount: Int,
+    val voteCount: Int? = null,
 
     @field:SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String? = null,
 
     )
