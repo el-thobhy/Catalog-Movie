@@ -51,6 +51,8 @@ class FavoriteMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapterList = AdapterList()
+        binding.imageEmpty.visibility = View.GONE
+        binding.emptyText.visibility = View.GONE
         setList()
         showRv()
         searchList()
@@ -138,6 +140,13 @@ class FavoriteMovieFragment : Fragment() {
 
     private fun setList() {
         favoriteViewModel.getFavoriteMovie().observe(viewLifecycleOwner) { movies ->
+            if (movies.isNullOrEmpty()){
+                binding.imageEmpty.visibility = View.VISIBLE
+                binding.emptyText.visibility = View.VISIBLE
+            } else {
+                binding.imageEmpty.visibility = View.GONE
+                binding.emptyText.visibility = View.GONE
+            }
             adapterList.submitList(movies)
         }
     }

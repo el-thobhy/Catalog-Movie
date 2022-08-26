@@ -50,6 +50,8 @@ class FavoriteTvShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapterList = AdapterList()
+        binding.imageEmpty.visibility = View.GONE
+        binding.emptyText.visibility = View.GONE
         showRv()
         setList()
         searchList()
@@ -137,6 +139,13 @@ class FavoriteTvShowFragment : Fragment() {
 
     private fun setList() {
         favoriteViewModel.getFavoriteTvShow().observe(viewLifecycleOwner) {
+            if (it.isNullOrEmpty()){
+                binding.imageEmpty.visibility = View.VISIBLE
+                binding.emptyText.visibility = View.VISIBLE
+            } else {
+                binding.imageEmpty.visibility = View.GONE
+                binding.emptyText.visibility = View.GONE
+            }
             adapterList.submitList(it)
         }
     }
