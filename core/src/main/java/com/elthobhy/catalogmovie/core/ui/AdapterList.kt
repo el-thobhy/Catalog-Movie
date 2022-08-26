@@ -12,8 +12,15 @@ import com.elthobhy.catalogmovie.core.utils.Constants
 
 class AdapterList : ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBACK) {
 
-    var onItemClick: ((DomainModel) -> Unit)? = null
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: DomainModel, binding: ItemListBinding)
+    }
     inner class ViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DomainModel, position: Int) {
@@ -32,7 +39,7 @@ class AdapterList : ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBA
                 tvOriginalTitle.text = item.original_title
                 tvOverview.text = item.overview
                 itemView.setOnClickListener {
-                    onItemClick?.invoke(getItem(position))
+                    onItemClickCallback.onItemClicked(item, binding)
                 }
             }
         }

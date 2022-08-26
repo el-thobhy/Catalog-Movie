@@ -1,16 +1,21 @@
 package com.elthobhy.catalogmovie.tvshow
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.core.data.Resource
+import com.elthobhy.catalogmovie.core.databinding.ItemListBinding
+import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.ui.AdapterList
 import com.elthobhy.catalogmovie.core.utils.Constants
 import com.elthobhy.catalogmovie.databinding.FragmentTvshowBinding
@@ -56,10 +61,27 @@ class TvshowFragment : Fragment() {
             setHasFixedSize(true)
             adapter = adapterList
         }
-        adapterList.onItemClick = {
+        adapterList.setOnItemClickCallback(object : AdapterList.OnItemClickCallback {
+            override fun onItemClicked(data: DomainModel, binding: ItemListBinding) {
+                setDetail(data, binding)
+            }
+        })
+    }
+
+    private fun setDetail(data: DomainModel, itemBinding: ItemListBinding) {
+        itemBinding.apply {
+            val optionCompat: ActivityOptionsCompat =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    context as Activity,
+                    Pair(title, "titleTransition"),
+                    Pair(tvDate, "dateTransition"),
+                    Pair(tvOriginalTitle, "originalTitleTransition"),
+                    Pair(tvOverview, "overviewTransition"),
+                    Pair(posterImage, "imageTransition")
+                )
             val intent = Intent(activity, DetailActivity::class.java)
-            intent.putExtra(Constants.DATA, it)
-            startActivity(intent)
+            intent.putExtra(Constants.DATA, data)
+            startActivity(intent, optionCompat.toBundle())
         }
     }
 

@@ -13,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/title"
+        android:transitionName="titleTransition"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/round_image"
@@ -27,6 +28,7 @@
         android:text="@string/date"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
+        android:transitionName="dateTransition"
         app:layout_constraintBottom_toBottomOf="@id/round_image"
         app:layout_constraintStart_toEndOf="@id/round_image"
         app:layout_constraintTop_toBottomOf="@id/title" />
@@ -39,6 +41,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/original_title"
         android:textSize="12sp"
+        android:transitionName="originalTitleTransition"
         app:layout_constraintTop_toBottomOf="@id/poster_image" />
 
     <TextView
@@ -49,6 +52,7 @@
         android:maxLines="2"
         android:text="@string/lorem"
         android:textSize="11sp"
+        android:transitionName="overviewTransition"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tv_original_title"
         app:layout_constraintStart_toStartOf="@id/tv_original_title"
@@ -69,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:transitionName="imageTransition"
         android:contentDescription="@string/image_poster"
         android:src="@mipmap/bird_thumbnail"
         app:layout_constraintEnd_toEndOf="parent"
