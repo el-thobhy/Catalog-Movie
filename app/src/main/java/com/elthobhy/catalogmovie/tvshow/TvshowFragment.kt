@@ -103,22 +103,18 @@ class TvshowFragment : Fragment() {
         tvShowViewModel.getTvShow().observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
-                    is Resource.Loading -> {
-
-                    }
+                    is Resource.Loading -> {}
                     is Resource.Success -> {
                         adapterList.submitList(it.data)
                     }
-                    is Resource.Error -> {
-                        Log.e("movieFragment", "setList: ${it.message}")
-                    }
+                    is Resource.Error -> {}
                 }
             }
         }
     }
 
     private fun searchList() {
-        searchViewModel.movieResult.observe(viewLifecycleOwner){
+        searchViewModel.tvShowResult.observe(viewLifecycleOwner){
             adapterList.submitList(it)
         }
         searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener{

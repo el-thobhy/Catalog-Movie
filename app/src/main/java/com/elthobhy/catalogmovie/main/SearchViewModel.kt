@@ -28,7 +28,7 @@ class SearchViewModel(private val useCase: UseCase): ViewModel() {
         .filter {
             it.trim().isNotEmpty()
         }
-        .mapLatest {
+        .flatMapLatest {
             useCase.getSearchTvShows(it)
         }.asLiveData()
 }
