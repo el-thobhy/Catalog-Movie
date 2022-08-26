@@ -63,6 +63,12 @@ class Repository(
         }
     }
 
+    override fun getFavoriteTvShow(): Flow<List<DomainModel>> {
+        return localDataSource.getFavoriteTvShow().map {
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
+
     override fun setFavoriteMovies(movie: DomainModel, state: Boolean) {
         val entity = DataMapper.mapDomainToEntity(movie)
         appExecutors.diskIO().execute{ localDataSource.setFavoriteMovie(entity, state) }

@@ -39,7 +39,7 @@ object DataMapper {
                 popularity = input.popularity,
                 overview = input.overview,
                 id = input.id,
-                isTvShow = false,
+                isTvShow = input.isTvShows,
                 originalTitle = input.original_title,
                 backdrop_path = input.backdrop_path,
                 originalLanguage = input.originalLanguage,
@@ -81,8 +81,8 @@ object DataMapper {
                 original_title = it.originalTitle,
                 popularity = it.popularity,
                 overview = it.overview,
-                isTvShows = it.isTvShow,
                 id = it.id,
+                isTvShows = it.isTvShow,
                 favorite = it.isFavorite,
                 originalLanguage = it.originalLanguage,
             )

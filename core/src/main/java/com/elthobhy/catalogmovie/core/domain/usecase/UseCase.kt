@@ -8,5 +8,6 @@ interface UseCase {
     fun getMovies(): Flow<Resource<List<DomainModel>>>
     fun getTvShow(): Flow<Resource<List<DomainModel>>>
     fun getFavoriteMovie(): Flow<List<DomainModel>>
+    fun getFavoriteTvShow(): Flow<List<DomainModel>>
     fun setFavoriteMovie(movie: DomainModel, state: Boolean)
 }

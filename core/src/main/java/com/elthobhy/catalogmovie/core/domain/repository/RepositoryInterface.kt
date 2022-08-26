@@ -10,5 +10,6 @@ interface RepositoryInterface {
     fun getMovies(): Flow<Resource<List<DomainModel>>>
     fun getTvShow(): Flow<Resource<List<DomainModel>>>
     fun getFavoriteMovies(): Flow<List<DomainModel>>
+    fun getFavoriteTvShow(): Flow<List<DomainModel>>
     fun setFavoriteMovies(movie: DomainModel, state: Boolean)
 }

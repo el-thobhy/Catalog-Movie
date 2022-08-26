@@ -20,19 +20,15 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setData()
+        val intent = intent.getParcelableExtra<DomainModel>(Constants.DATA)
+        if(intent != null){
+            showDetail(intent)
+        }
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.detail)
     }
 
-
-    private fun setData() {
-        val intent = intent.getParcelableExtra<DomainModel>(Constants.DATA)
-        if(intent != null){
-            showDetail(intent)
-        }
-    }
 
     private fun showDetail(intent: DomainModel) {
         with(binding) {
@@ -50,14 +46,10 @@ class DetailActivity : AppCompatActivity() {
             setFavoriteState(favorite)
             fabFavorite.setOnClickListener {
                 favorite = !favorite
+                detailViewModel.setFavoriteMovie(intent, favorite)
                 setFavoriteState(favorite)
-                insertFavorite(intent,favorite)
             }
         }
-    }
-
-    private fun insertFavorite(intent: DomainModel, favorite: Boolean) {
-        detailViewModel.setFavoriteMovie(intent, favorite)
     }
 
     private fun setFavoriteState(favorite: Boolean) {
