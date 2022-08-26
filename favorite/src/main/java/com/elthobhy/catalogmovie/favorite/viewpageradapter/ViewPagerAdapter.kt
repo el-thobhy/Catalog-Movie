@@ -6,7 +6,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.elthobhy.catalogmovie.core.utils.Constants
 import com.elthobhy.catalogmovie.favorite.movies.FavoriteMovieFragment
 import com.elthobhy.catalogmovie.favorite.tvshow.FavoriteTvShowFragment
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     override fun getItemCount(): Int = Constants.NUM_PAGE
 

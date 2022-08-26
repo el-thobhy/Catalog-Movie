@@ -22,7 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabMode="auto"
-        app:tabSelectedTextColor="@android:color/darker_gray" />
+        app:tabSelectedTextColor="@android:color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

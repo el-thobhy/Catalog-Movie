@@ -28,6 +28,7 @@ class AdapterList : ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBA
                 title.text = item.title
                 Glide.with(itemView)
                     .load(Constants.IMAGE_LINK + item.backdrop_path)
+                    .override(800, 600)
                     .into(posterImage)
 
                 tvDate.text = item.releaseDate

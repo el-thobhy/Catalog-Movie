@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/app/src/main/res/drawable/bg_count.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/app/src/main/res/drawable/bg_nav.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/app/src/main/res/drawable/bg_splash.xml" value="0.1085" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/app/src/main/res/drawable/ic_baseline_bookmark_border_24.xml" value="0.1735" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/app/src/main/res/drawable/ic_baseline_how_to_vote_24.xml" value="0.1075" />
@@ -24,7 +25,7 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/core/src/main/res/layout/item_loading.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/core/src/main/res/layout/layout_dialog_error.xml" value="0.25" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/core/src/main/res/layout/layout_dialog_loading.xml" value="0.5" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/favorite/src/main/res/layout/fragment_favorite.xml" value="0.2" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/favorite/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/favorite/src/main/res/layout/fragment_favorite_movie.xml" value="0.25" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/CatalogMovie/favorite/src/main/res/layout/fragment_favorite_tv_show.xml" value="0.1" />
       </map>

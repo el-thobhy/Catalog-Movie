@@ -9,7 +9,11 @@ import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.databinding.ActivityMainBinding
 import com.elthobhy.catalogmovie.movie.MovieFragment
 import com.elthobhy.catalogmovie.tvshow.TvshowFragment
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

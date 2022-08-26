@@ -139,7 +139,6 @@ class TvshowFragment : Fragment() {
                     is Resource.Success -> {
                         dialogLoading.dismiss()
                         adapterList.submitList(it.data)
-                        Log.e("tvshow", "setList: ${it.data}" )
                     }
                     is Resource.Error -> {
                         dialogError = showDialogError(requireContext(), it.message)

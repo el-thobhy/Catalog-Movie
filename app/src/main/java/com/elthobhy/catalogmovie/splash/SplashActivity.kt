@@ -8,7 +8,11 @@ import android.os.Handler
 import android.os.Looper
 import com.elthobhy.catalogmovie.databinding.ActivitySplashBinding
 import com.elthobhy.catalogmovie.main.MainActivity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 

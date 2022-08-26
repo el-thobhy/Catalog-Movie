@@ -17,7 +17,8 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/round_image"
-        app:layout_constraintTop_toTopOf="@id/round_image" />
+        app:layout_constraintTop_toTopOf="@id/round_image"
+        app:layout_constraintBottom_toTopOf="@id/tv_date"/>
 
     <TextView
         android:id="@+id/tv_date"
@@ -37,7 +38,9 @@
         android:id="@+id/tv_original_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/original_title"
         android:textSize="12sp"
@@ -52,7 +55,11 @@
         android:maxLines="2"
         android:text="@string/lorem"
         android:textSize="11sp"
+        android:textColor="@android:color/darker_gray"
         android:transitionName="overviewTransition"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tv_original_title"
         app:layout_constraintStart_toStartOf="@id/tv_original_title"
@@ -72,13 +79,15 @@
         android:id="@+id/poster_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:transitionName="imageTransition"
         android:contentDescription="@string/image_poster"
         android:src="@mipmap/bird_thumbnail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/round_image"
+        app:layout_constraintBottom_toTopOf="@+id/tv_original_title"
         app:riv_corner_radius="20dp" />
 
 
