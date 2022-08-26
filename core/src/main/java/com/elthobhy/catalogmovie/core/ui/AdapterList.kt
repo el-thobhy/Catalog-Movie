@@ -18,16 +18,16 @@ class AdapterList: ListAdapter<DomainModel, AdapterList.ViewHolder>(DIFF_CALLBAC
         fun bind(item: DomainModel?, position: Int) {
             with(binding){
                 title.text = item?.title
-                roundImage.let {
-                    Glide.with(itemView)
-                        .load(Constants.IMAGE_LINK + item?.backdrop_path)
-                        .into(roundImage)
-                }
-                tvDate.text = item?.releaseDate
                 posterImage.let {
                     Glide.with(itemView)
-                        .load(Constants.IMAGE_LINK + item?.posterPath)
+                        .load(Constants.IMAGE_LINK + item?.backdrop_path)
                         .into(posterImage)
+                }
+                tvDate.text = item?.releaseDate
+                roundImage.let {
+                    Glide.with(itemView)
+                        .load(Constants.IMAGE_LINK + item?.posterPath)
+                        .into(roundImage)
                 }
                 tvOriginalTitle.text = item?.original_title
                 tvOverview.text = item?.overview

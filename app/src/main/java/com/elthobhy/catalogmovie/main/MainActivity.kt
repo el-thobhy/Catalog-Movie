@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         navigationChange(MovieFragment())
-        binding.bottomNav.setNavigationChangeListener { view, position ->
+        binding.bottomNav.setNavigationChangeListener { _, position ->
             when (position) {
                 0 -> navigationChange(MovieFragment())
                 1 -> navigationChange(TvshowFragment())
