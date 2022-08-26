@@ -9,6 +9,8 @@ class LocalDataSource(private val dao: Dao) {
     fun getTvShow(): Flow<List<Entity>> = dao.getTvShow()
     fun getSearchMovies(search: String): Flow<List<Entity>> = dao.getSearchMovies(search)
     fun getSearchTvShow(search: String): Flow<List<Entity>> = dao.getSearchTvShow(search)
+    fun getSearchFavoriteMovies(search: String): Flow<List<Entity>> = dao.getSearchFavoriteMovies(search)
+    fun getSearchFavoriteTvShow(search: String): Flow<List<Entity>> = dao.getSearchFavoriteTvShow(search)
     suspend fun insert(entity: List<Entity>) = dao.insert(entity)
     fun getFavoriteMovie(): Flow<List<Entity>> = dao.getFavoriteMovie()
     fun getFavoriteTvShow(): Flow<List<Entity>> = dao.getFavoriteTvShow()

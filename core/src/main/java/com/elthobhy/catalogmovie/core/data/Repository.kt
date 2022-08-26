@@ -69,11 +69,24 @@ class Repository(
         }
     }
 
+    override fun getSearchFavoriteMovies(search: String): Flow<List<DomainModel>> {
+        return localDataSource.getSearchFavoriteMovies(search).map {
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
+
+    override fun getSearchFavoriteTvShow(search: String): Flow<List<DomainModel>> {
+        return localDataSource.getSearchFavoriteTvShow(search).map {
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
+
     override fun getFavoriteMovies(): Flow<List<DomainModel>> {
         return localDataSource.getFavoriteMovie().map {
             DataMapper.mapEntityToDomain(it)
         }
     }
+
 
     override fun getFavoriteTvShow(): Flow<List<DomainModel>> {
         return localDataSource.getFavoriteTvShow().map {

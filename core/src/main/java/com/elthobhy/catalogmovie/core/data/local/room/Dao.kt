@@ -19,6 +19,12 @@ interface Dao {
     @Query("SELECT * FROM entity WHERE isTvShow = 1 AND title LIKE '%' || :search || '%' ")
     fun getSearchTvShow(search: String): Flow<List<Entity>>
 
+    @Query("SELECT * FROM entity WHERE isTvShow = 0 AND isFavorite = 1 AND title LIKE '%' || :search || '%' ")
+    fun getSearchFavoriteMovies(search: String): Flow<List<Entity>>
+
+    @Query("SELECT * FROM entity WHERE isTvShow = 1 AND isFavorite = 1 AND title LIKE '%' || :search || '%' ")
+    fun getSearchFavoriteTvShow(search: String): Flow<List<Entity>>
+
     @Query("SELECT * FROM entity WHERE isTvShow = 0 AND isFavorite = 1")
     fun getFavoriteMovie(): Flow<List<Entity>>
 

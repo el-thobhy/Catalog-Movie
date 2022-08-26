@@ -67,6 +67,7 @@ class MovieFragment : Fragment() {
         val menuHost: MenuHost = requireActivity() as MenuHost
         menuHost.addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menu.clear()
                 menuInflater.inflate(R.menu.search_menu, menu)
                 val item = menu.findItem(R.id.action_search)
                 searchView.setMenuItem(item)
