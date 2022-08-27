@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".detail.DetailActivity">
@@ -43,6 +44,16 @@
             app:layout_constraintStart_toEndOf="@+id/image_popular"
             app:layout_constraintTop_toTopOf="@id/image_vote" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@id/image_backdrop"
+            app:layout_constraintEnd_toEndOf="@id/image_backdrop"
+            app:layout_constraintStart_toStartOf="@id/image_backdrop"
+            app:layout_constraintTop_toTopOf="@id/image_backdrop" />
+
         <TextView
             android:id="@+id/title_detail"
             android:layout_width="0dp"
@@ -60,10 +71,10 @@
             android:id="@+id/tv_releaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:transitionName="dateTransition"
             android:fontFamily="@font/poppins_light"
             android:text="@string/release_date"
             android:textSize="12sp"
+            android:transitionName="dateTransition"
             app:layout_constraintStart_toStartOf="@id/title_detail"
             app:layout_constraintTop_toBottomOf="@id/title_detail" />
 
@@ -126,9 +137,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_light"
             android:paddingBottom="20dp"
-            android:transitionName="overviewTransition"
             android:text="@string/lorem"
             android:textSize="12sp"
+            android:transitionName="overviewTransition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_overview" />
@@ -149,6 +160,7 @@
             android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -175,7 +187,7 @@
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image_backdrop"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="230dp"
             android:contentDescription="@string/image_backdrop"
             android:src="@mipmap/bird_thumbnail"
             android:transitionName="imageTransition"

@@ -66,14 +66,14 @@ class FavoriteMovieFragment : Fragment() {
     }
 
     private fun setOptionMenu() {
-        val menuHost: MenuHost = requireActivity() as MenuHost
+        val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menu.clear()
                 menuInflater.inflate(R.menu.search_menu, menu)
                 val item = menu.findItem(R.id.action_search)
                 searchView.setMenuItem(item)
-                searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener{
+                searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         return true
                     }
@@ -95,10 +95,17 @@ class FavoriteMovieFragment : Fragment() {
     }
 
     private fun searchList() {
-        searchViewModel.movieFavoriteResult.observe(viewLifecycleOwner){
+        searchViewModel.movieFavoriteResult.observe(viewLifecycleOwner) {
+            if (it.isNullOrEmpty()) {
+                binding.imageEmpty.visibility = View.VISIBLE
+                binding.emptyText.visibility = View.VISIBLE
+            } else {
+                binding.imageEmpty.visibility = View.GONE
+                binding.emptyText.visibility = View.GONE
+            }
             adapterList.submitList(it)
         }
-        searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener{
+        searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener {
             override fun onSearchViewShown() {}
 
             override fun onSearchViewClosed() {
@@ -140,7 +147,7 @@ class FavoriteMovieFragment : Fragment() {
 
     private fun setList() {
         favoriteViewModel.getFavoriteMovie().observe(viewLifecycleOwner) { movies ->
-            if (movies.isNullOrEmpty()){
+            if (movies.isNullOrEmpty()) {
                 binding.imageEmpty.visibility = View.VISIBLE
                 binding.emptyText.visibility = View.VISIBLE
             } else {

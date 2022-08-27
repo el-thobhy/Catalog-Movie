@@ -10,9 +10,13 @@ import com.elthobhy.catalogmovie.di.favoriteModule
 import com.elthobhy.catalogmovie.favorite.databinding.FragmentFavoriteBinding
 import com.elthobhy.catalogmovie.favorite.viewpageradapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import org.koin.core.context.loadKoinModules
 
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null

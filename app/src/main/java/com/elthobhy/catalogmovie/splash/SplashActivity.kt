@@ -2,10 +2,10 @@ package com.elthobhy.catalogmovie.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.elthobhy.catalogmovie.databinding.ActivitySplashBinding
 import com.elthobhy.catalogmovie.main.MainActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi

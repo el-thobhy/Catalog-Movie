@@ -3,26 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="16dp"
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
-        android:contentDescription="@string/image_loading"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/image_loading"/>
+        android:contentDescription="@string/image_loading"
+        android:src="@mipmap/image_loading" />
 
     <TextView
         android:id="@+id/tv_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="@string/please_wait"
-        android:textSize="16sp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="20dp"/>
+        android:text="@string/please_wait"
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
 </LinearLayout>

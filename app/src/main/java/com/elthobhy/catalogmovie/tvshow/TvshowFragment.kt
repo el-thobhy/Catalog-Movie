@@ -3,7 +3,6 @@ package com.elthobhy.catalogmovie.tvshow
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -101,14 +100,14 @@ class TvshowFragment : Fragment() {
     }
 
     private fun setOptionMenu() {
-        val menuHost: MenuHost = requireActivity() as MenuHost
+        val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menu.clear()
                 menuInflater.inflate(R.menu.search_menu, menu)
                 val item = menu.findItem(R.id.action_search)
                 searchView.setMenuItem(item)
-                searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener{
+                searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         return true
                     }
@@ -151,10 +150,10 @@ class TvshowFragment : Fragment() {
     }
 
     private fun searchList() {
-        searchViewModel.tvShowResult.observe(viewLifecycleOwner){
+        searchViewModel.tvShowResult.observe(viewLifecycleOwner) {
             adapterList.submitList(it)
         }
-        searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener{
+        searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener {
             override fun onSearchViewShown() {}
 
             override fun onSearchViewClosed() {

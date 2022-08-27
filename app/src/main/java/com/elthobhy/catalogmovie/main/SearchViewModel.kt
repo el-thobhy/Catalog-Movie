@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.*
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class SearchViewModel(private val useCase: UseCase): ViewModel() {
+class SearchViewModel(private val useCase: UseCase) : ViewModel() {
     val queryChannel = MutableStateFlow("")
 
     val movieResult = queryChannel
