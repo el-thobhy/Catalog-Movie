@@ -26,7 +26,7 @@ jobs:
           command: ./gradlew assembleDebug --stacktrace --info | tee my-logs.txt
       - run:
           name: Run Build
-          command: ./gradlew build
+          command: ./gradlew build --stacktrace --info | tee my-logs.txt
       - store_artifacts: 
           path: app/build/reports
           destination: reports
