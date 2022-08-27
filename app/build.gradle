@@ -7,12 +7,12 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
-    compileSdk 30
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.elthobhy.catalogmovie"
         minSdk 23
-        targetSdk 30
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
