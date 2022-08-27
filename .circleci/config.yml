@@ -22,9 +22,6 @@ jobs:
             - ~/.android/build-cache
             - ~/.android/cache
       - run:
-          name: Debug
-          command: ./gradlew assembleDebug --stacktrace --info | tee my-logs.txt
-      - run:
           name: Run Build
           command: ./gradlew build --stacktrace --info | tee my-logs.txt
       - store_artifacts: 
