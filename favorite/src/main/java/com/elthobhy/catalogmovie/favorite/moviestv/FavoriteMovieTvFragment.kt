@@ -76,6 +76,9 @@ class FavoriteMovieTvFragment(private val isMovie: Boolean) : Fragment() {
                 searchView.setMenuItem(item)
                 searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
+                        query?.let {
+                            searchViewModel.queryChannel.value = it
+                        }
                         return true
                     }
 
@@ -160,8 +163,8 @@ class FavoriteMovieTvFragment(private val isMovie: Boolean) : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

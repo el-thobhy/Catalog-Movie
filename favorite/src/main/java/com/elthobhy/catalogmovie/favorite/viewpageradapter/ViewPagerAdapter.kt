@@ -2,6 +2,8 @@ package com.elthobhy.catalogmovie.favorite.viewpageradapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.elthobhy.catalogmovie.core.utils.Constants
 import com.elthobhy.catalogmovie.favorite.moviestv.FavoriteMovieTvFragment
@@ -10,7 +12,7 @@ import kotlinx.coroutines.FlowPreview
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+class ViewPagerAdapter(fa: FragmentActivity, lifecycle: Lifecycle) : FragmentStateAdapter(fa.supportFragmentManager, lifecycle) {
     override fun getItemCount(): Int = Constants.NUM_PAGE
 
     override fun createFragment(position: Int): Fragment {
