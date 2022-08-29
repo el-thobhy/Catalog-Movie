@@ -175,8 +175,8 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        searchView.setOnQueryTextListener(null)
-        searchView.setOnSearchViewListener(null)
+        sharedElementEnterTransition = null
+        sharedElementReturnTransition = null
         dialogLoading.dismiss()
         dialogError.dismiss()
     }
