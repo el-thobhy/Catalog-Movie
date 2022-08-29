@@ -166,8 +166,6 @@ class FavoriteMovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        sharedElementEnterTransition = null
-        sharedElementReturnTransition = null
         _binding = null
     }
 }

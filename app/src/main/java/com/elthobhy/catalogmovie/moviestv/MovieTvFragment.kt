@@ -177,8 +177,6 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        sharedElementEnterTransition = null
-        sharedElementReturnTransition = null
         dialogLoading.dismiss()
         dialogError.dismiss()
     }

@@ -1,15 +1,21 @@
 package com.elthobhy.catalogmovie.main
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.ArrayMap
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.databinding.ActivityMainBinding
 import com.elthobhy.catalogmovie.moviestv.MovieTvFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import java.lang.ref.WeakReference
 
 @FlowPreview
 @ExperimentalCoroutinesApi
@@ -54,5 +60,36 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container_fragment, fragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .commit()
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun removeActivityFromTransitionManager(activity: Activity) {
+        val transition = TransitionManager::class.java
+        try {
+            val field = transition.getDeclaredField("sRunningTransitions")
+            field.isAccessible = true
+            val runningTransitions: ThreadLocal<WeakReference<ArrayMap<ViewGroup, ArrayList<Transition>>>> =
+                field.get(transition) as ThreadLocal<WeakReference<ArrayMap<ViewGroup, ArrayList<Transition>>>>
+            if (runningTransitions.get() == null || runningTransitions.get()?.get() == null) {
+                return
+            }
+            val map = runningTransitions.get()?.get()
+            val decorView = activity.window.decorView
+            if (map != null) {
+                if (map.containsKey(decorView)) {
+                    map.remove(decorView)
+                }
+            }
+
+        } catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        removeActivityFromTransitionManager(this)
     }
 }
