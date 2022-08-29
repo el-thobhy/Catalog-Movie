@@ -36,7 +36,7 @@ class FavoriteMovieFragment : Fragment() {
     private val binding get() = _binding as FragmentFavoriteMovieBinding
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private lateinit var adapterList: AdapterList
-    private val searchViewModel: SearchViewModel by viewModel()
+    internal val searchViewModel: SearchViewModel by viewModel()
     private lateinit var searchView: MaterialSearchView
 
     override fun onCreateView(
@@ -128,7 +128,7 @@ class FavoriteMovieFragment : Fragment() {
         })
     }
 
-    private fun setDetail(data: DomainModel, itemBinding: ItemListBinding) {
+    internal fun setDetail(data: DomainModel, itemBinding: ItemListBinding) {
         itemBinding.apply {
             val optionCompat: ActivityOptionsCompat =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -145,7 +145,7 @@ class FavoriteMovieFragment : Fragment() {
         }
     }
 
-    private fun setList() {
+    internal fun setList() {
         favoriteViewModel.getFavoriteMovie().observe(viewLifecycleOwner) { movies ->
             if (movies.isNullOrEmpty()) {
                 binding.imageEmpty.visibility = View.VISIBLE

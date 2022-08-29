@@ -7,8 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.databinding.ActivityMainBinding
-import com.elthobhy.catalogmovie.movie.MovieFragment
-import com.elthobhy.catalogmovie.tvshow.TvshowFragment
+import com.elthobhy.catalogmovie.tvmovie.MovieTvFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
@@ -22,11 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigationChange(MovieFragment())
+        navigationChange(MovieTvFragment(true))
         binding.bottomNav.setNavigationChangeListener { _, position ->
             when (position) {
-                0 -> navigationChange(MovieFragment())
-                1 -> navigationChange(TvshowFragment())
+                0 -> navigationChange(MovieTvFragment(true))
+                1 -> navigationChange(MovieTvFragment(false))
                 2 -> navigationToFavorite()
             }
         }
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment")
                 .newInstance() as Fragment
         } catch (e: Exception) {
-            Toast.makeText(this, "module not found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.not_found_module), Toast.LENGTH_SHORT).show()
             null
         }
     }

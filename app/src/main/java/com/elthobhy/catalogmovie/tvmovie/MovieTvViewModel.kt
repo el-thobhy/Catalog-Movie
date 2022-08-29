@@ -1,4 +1,4 @@
-package com.elthobhy.catalogmovie.tvshow
+package com.elthobhy.catalogmovie.tvmovie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +7,7 @@ import com.elthobhy.catalogmovie.core.data.Resource
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.domain.usecase.UseCase
 
-class TvShowViewModel(private val useCase: UseCase) : ViewModel() {
+class MovieTvViewModel(private val useCase: UseCase) : ViewModel() {
+    fun getMovies(): LiveData<Resource<List<DomainModel>>> = useCase.getMovies().asLiveData()
     fun getTvShow(): LiveData<Resource<List<DomainModel>>> = useCase.getTvShow().asLiveData()
 }

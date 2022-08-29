@@ -1,4 +1,4 @@
-package com.elthobhy.catalogmovie.movie
+package com.elthobhy.catalogmovie.tvmovie
 
 import android.app.Activity
 import android.content.Intent
@@ -32,12 +32,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class MovieFragment : Fragment() {
+class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding as FragmentMovieBinding
-    private val movieViewModel: MovieViewModel by viewModel()
-    private val searchViewModel: SearchViewModel by viewModel()
+    private val movieTvViewModel: MovieTvViewModel by viewModel()
+    internal val searchViewModel: SearchViewModel by viewModel()
     private lateinit var adapterList: AdapterList
     private lateinit var searchView: MaterialSearchView
     private lateinit var dialogError: AlertDialog
@@ -111,7 +111,7 @@ class MovieFragment : Fragment() {
         })
     }
 
-    private fun setDetail(data: DomainModel, itemBinding: ItemListBinding) {
+    internal fun setDetail(data: DomainModel, itemBinding: ItemListBinding) {
         itemBinding.apply {
             val optionCompat: ActivityOptionsCompat =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -142,30 +142,55 @@ class MovieFragment : Fragment() {
         })
     }
 
-    private fun setList() {
-        movieViewModel.getMovies().observe(viewLifecycleOwner) {
-            if (it != null) {
-                when (it) {
-                    is Resource.Loading -> {
-                        dialogLoading.show()
+    internal fun setList() {
+        if (isMovie) {
+            movieTvViewModel.getMovies().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it) {
+                        is Resource.Loading -> {
+                            dialogLoading.show()
+                        }
+                        is Resource.Success -> {
+                            dialogLoading.dismiss()
+                            adapterList.submitList(it.data)
+                        }
+                        is Resource.Error -> {
+                            dialogError = showDialogError(requireContext(), it.message)
+                            dialogError.show()
+                            dialogLoading.dismiss()
+                        }
                     }
-                    is Resource.Success -> {
-                        dialogLoading.dismiss()
-                        adapterList.submitList(it.data)
-                    }
-                    is Resource.Error -> {
-                        dialogError = showDialogError(requireContext(), it.message)
-                        dialogError.show()
-                        dialogLoading.dismiss()
+                }
+            }
+        } else {
+            movieTvViewModel.getTvShow().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it) {
+                        is Resource.Loading -> {
+                            dialogLoading.show()
+                        }
+                        is Resource.Success -> {
+                            dialogLoading.dismiss()
+                            adapterList.submitList(it.data)
+                        }
+                        is Resource.Error -> {
+                            dialogError = showDialogError(requireContext(), it.message)
+                            dialogError.show()
+                            dialogLoading.dismiss()
+                        }
                     }
                 }
             }
         }
+
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        searchView.setOnQueryTextListener(null)
+        searchView.setOnSearchViewListener(null)
         dialogLoading.dismiss()
         dialogError.dismiss()
     }
