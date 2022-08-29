@@ -11,7 +11,8 @@ import kotlinx.coroutines.FlowPreview
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class ViewPagerAdapter(fa: FragmentActivity, lifecycle: Lifecycle) : FragmentStateAdapter(fa.supportFragmentManager, lifecycle) {
+class ViewPagerAdapter(fa: FragmentActivity, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fa.supportFragmentManager, lifecycle) {
     override fun getItemCount(): Int = Constants.NUM_PAGE
 
     override fun createFragment(position: Int): Fragment {

@@ -130,9 +130,9 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
     }
 
     private fun searchList() {
-        if(isMovie){
+        if (isMovie) {
             searchViewModel.movieResult.observe(viewLifecycleOwner, observerSearch)
-        }else{
+        } else {
             searchViewModel.tvShowResult.observe(viewLifecycleOwner, observerSearch)
         }
         searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener {
@@ -144,7 +144,8 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
         })
     }
-    private val observerSearch = Observer<List<DomainModel>>{ adapterList.submitList(it) }
+
+    private val observerSearch = Observer<List<DomainModel>> { adapterList.submitList(it) }
 
     internal fun setList() {
         if (isMovie) {
@@ -153,7 +154,8 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
             movieTvViewModel.getTvShow().observe(viewLifecycleOwner, observerMovieTvShow)
         }
     }
-    private val observerMovieTvShow = Observer<Resource<List<DomainModel>>>{
+
+    private val observerMovieTvShow = Observer<Resource<List<DomainModel>>> {
         if (it != null) {
             when (it) {
                 is Resource.Loading -> {

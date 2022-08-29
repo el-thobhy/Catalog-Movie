@@ -114,7 +114,8 @@ class FavoriteMovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
         })
     }
-    private val observerMovieTvShow = Observer<List<DomainModel>>{
+
+    private val observerMovieTvShow = Observer<List<DomainModel>> {
         if (it.isNullOrEmpty()) {
             binding.imageEmpty.visibility = View.VISIBLE
             binding.emptyText.visibility = View.VISIBLE
