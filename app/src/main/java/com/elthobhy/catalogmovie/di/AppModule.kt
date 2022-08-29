@@ -4,7 +4,7 @@ import com.elthobhy.catalogmovie.core.domain.usecase.RepositoryInteract
 import com.elthobhy.catalogmovie.core.domain.usecase.UseCase
 import com.elthobhy.catalogmovie.detail.DetailViewModel
 import com.elthobhy.catalogmovie.main.SearchViewModel
-import com.elthobhy.catalogmovie.tvmovie.MovieTvViewModel
+import com.elthobhy.catalogmovie.moviestv.MovieTvViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.dsl.viewModel

@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.databinding.ActivityMainBinding
-import com.elthobhy.catalogmovie.tvmovie.MovieTvFragment
+import com.elthobhy.catalogmovie.moviestv.MovieTvFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 

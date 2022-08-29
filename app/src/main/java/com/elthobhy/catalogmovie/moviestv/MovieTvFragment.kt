@@ -1,4 +1,4 @@
-package com.elthobhy.catalogmovie.tvmovie
+package com.elthobhy.catalogmovie.moviestv
 
 import android.app.Activity
 import android.content.Intent
