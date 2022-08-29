@@ -91,6 +91,7 @@
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:textColor="@color/black"
                 android:hint="@string/search_title"
                 android:textColorHint="@android:color/darker_gray" />
         </FrameLayout>

@@ -22,7 +22,8 @@ class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding as FragmentFavoriteBinding
-    private lateinit var viewPager2: ViewPager2
+    private var _viewPager2: ViewPager2? = null
+    private val viewPager2 get() = _viewPager2
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     override fun onCreateView(
@@ -31,8 +32,8 @@ class FavoriteFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         viewPagerAdapter = ViewPagerAdapter(requireActivity())
-        viewPager2 = binding.viewPager
-        viewPager2.adapter = viewPagerAdapter
+        _viewPager2 = binding.viewPager
+        viewPager2?.adapter = viewPagerAdapter
 
         val tabTitle = arrayOf(
             R.string.movies,
@@ -55,7 +56,7 @@ class FavoriteFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        binding.viewPager.adapter = null
+        _viewPager2 = null
         unloadKoinModules(favoriteModule)
     }
 }

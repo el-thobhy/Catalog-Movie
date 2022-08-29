@@ -4,8 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.elthobhy.catalogmovie.core.utils.Constants
-import com.elthobhy.catalogmovie.favorite.movies.FavoriteMovieFragment
-import com.elthobhy.catalogmovie.favorite.tvshow.FavoriteTvShowFragment
+import com.elthobhy.catalogmovie.favorite.moviestv.FavoriteMovieTvFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
@@ -17,8 +16,8 @@ class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = FavoriteMovieFragment()
-            1 -> fragment = FavoriteTvShowFragment()
+            0 -> fragment = FavoriteMovieTvFragment(true)
+            1 -> fragment = FavoriteMovieTvFragment(false)
         }
         return fragment as Fragment
     }

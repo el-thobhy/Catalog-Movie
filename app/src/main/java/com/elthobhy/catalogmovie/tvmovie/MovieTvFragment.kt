@@ -12,6 +12,7 @@ import androidx.core.util.Pair
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.core.data.Resource
@@ -129,8 +130,10 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
     }
 
     private fun searchList() {
-        searchViewModel.movieResult.observe(viewLifecycleOwner) {
-            adapterList.submitList(it)
+        if(isMovie){
+            searchViewModel.movieResult.observe(viewLifecycleOwner, observerSearch)
+        }else{
+            searchViewModel.tvShowResult.observe(viewLifecycleOwner, observerSearch)
         }
         searchView.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener {
             override fun onSearchViewShown() {}
@@ -141,49 +144,32 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
         })
     }
+    private val observerSearch = Observer<List<DomainModel>>{ adapterList.submitList(it) }
 
     internal fun setList() {
         if (isMovie) {
-            movieTvViewModel.getMovies().observe(viewLifecycleOwner) {
-                if (it != null) {
-                    when (it) {
-                        is Resource.Loading -> {
-                            dialogLoading.show()
-                        }
-                        is Resource.Success -> {
-                            dialogLoading.dismiss()
-                            adapterList.submitList(it.data)
-                        }
-                        is Resource.Error -> {
-                            dialogError = showDialogError(requireContext(), it.message)
-                            dialogError.show()
-                            dialogLoading.dismiss()
-                        }
-                    }
-                }
-            }
+            movieTvViewModel.getMovies().observe(viewLifecycleOwner, observerMovieTvShow)
         } else {
-            movieTvViewModel.getTvShow().observe(viewLifecycleOwner) {
-                if (it != null) {
-                    when (it) {
-                        is Resource.Loading -> {
-                            dialogLoading.show()
-                        }
-                        is Resource.Success -> {
-                            dialogLoading.dismiss()
-                            adapterList.submitList(it.data)
-                        }
-                        is Resource.Error -> {
-                            dialogError = showDialogError(requireContext(), it.message)
-                            dialogError.show()
-                            dialogLoading.dismiss()
-                        }
-                    }
+            movieTvViewModel.getTvShow().observe(viewLifecycleOwner, observerMovieTvShow)
+        }
+    }
+    private val observerMovieTvShow = Observer<Resource<List<DomainModel>>>{
+        if (it != null) {
+            when (it) {
+                is Resource.Loading -> {
+                    dialogLoading.show()
+                }
+                is Resource.Success -> {
+                    dialogLoading.dismiss()
+                    adapterList.submitList(it.data)
+                }
+                is Resource.Error -> {
+                    dialogError = showDialogError(requireContext(), it.message)
+                    dialogError.show()
+                    dialogLoading.dismiss()
                 }
             }
         }
-
-
     }
 
     override fun onDestroy() {
