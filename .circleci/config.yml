@@ -26,7 +26,7 @@ jobs:
           name: Run Build
           command: ./gradlew build --stacktrace | tee my-logs.txt
       - codecov/upload:
-          - file: './report'
+          - file: './report.json'
       - store_artifacts: 
           path: app/build/reports
           destination: reports
