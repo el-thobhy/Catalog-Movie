@@ -1,6 +1,8 @@
 package com.elthobhy.catalogmovie.main
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -26,21 +28,26 @@ class MainActivity : AppCompatActivity() {
             when (position) {
                 0 -> navigationChange(MovieTvFragment(true))
                 1 -> navigationChange(MovieTvFragment(false))
-                2 -> featureFragment()
+                2 -> moveToFavoriteFragment()
             }
         }
     }
 
-    private fun featureFragment() {
-        val fragment =
-            Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment").newInstance()
-        if (fragment is Fragment) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container_fragment, fragment, "dynamic_fragment")
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack("dynamic_fragment")
-                .commit()
+    private fun moveToFavoriteFragment() {
+        val fragment = featureFragment()
+        Log.d("fragmentName", fragment.toString())
+        if (fragment != null) {
+            navigationChange(fragment)
+        }
+    }
+
+    private fun featureFragment(): Fragment? {
+        return try {
+            Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment")
+                .newInstance() as Fragment
+        } catch (e: Exception) {
+            Toast.makeText(this, "Module not found", Toast.LENGTH_SHORT).show()
+            null
         }
     }
 
