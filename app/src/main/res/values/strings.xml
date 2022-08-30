@@ -5,11 +5,7 @@
     <string name="tv_favorite">Favorite</string>
     <string name="search_title">Search title</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello Movie fragment</string>
-    <string name="movie_fragment">Movie Fragment</string>
-    <string name="tvshow_fragment">Tv Show Fragment</string>
     <string name="title_favorite">favorite</string>
-    <string name="hello_show_fragment">Hello Show Fragment</string>
     <string name="image_backdrop">Image Backdrop</string>
     <string name="fab_favorite">Fab Favorite</string>
     <string name="release_date">Release Date</string>
@@ -17,6 +13,5 @@
     <string name="detail">Detail</string>
     <string name="search">Search</string>
     <string name="splash_screen">Splash Screen</string>
-    <string name="not_found_module">module not found</string>
 
 </resources>
