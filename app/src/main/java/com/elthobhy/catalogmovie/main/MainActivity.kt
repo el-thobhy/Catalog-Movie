@@ -1,7 +1,6 @@
 package com.elthobhy.catalogmovie.main
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun moveToFavoriteFragment() {
         val fragment = featureFragment()
-        Log.d("fragmentName", fragment.toString())
         if (fragment != null) {
             navigationChange(fragment)
         }
