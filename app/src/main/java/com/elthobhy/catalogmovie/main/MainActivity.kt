@@ -1,22 +1,15 @@
 package com.elthobhy.catalogmovie.main
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.ArrayMap
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.transition.Transition
-import androidx.transition.TransitionManager
 import com.elthobhy.catalogmovie.R
 import com.elthobhy.catalogmovie.core.utils.removeActivityFromTransitionManager
 import com.elthobhy.catalogmovie.databinding.ActivityMainBinding
 import com.elthobhy.catalogmovie.moviestv.MovieTvFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import java.lang.ref.WeakReference
 
 @FlowPreview
 @ExperimentalCoroutinesApi
@@ -33,25 +26,21 @@ class MainActivity : AppCompatActivity() {
             when (position) {
                 0 -> navigationChange(MovieTvFragment(true))
                 1 -> navigationChange(MovieTvFragment(false))
-                2 -> navigationToFavorite()
+                2 -> featureFragment()
             }
         }
     }
 
-    private fun navigationToFavorite() {
-        val fragment = featureFragment()
-        if (fragment != null) {
-            navigationChange(fragment)
-        }
-    }
-
-    private fun featureFragment(): Fragment? {
-        return try {
-            Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment")
-                .newInstance() as Fragment
-        } catch (e: Exception) {
-            Toast.makeText(this, getString(R.string.not_found_module), Toast.LENGTH_SHORT).show()
-            null
+    private fun featureFragment() {
+        val fragment =
+            Class.forName("com.elthobhy.catalogmovie.favorite.FavoriteFragment").newInstance()
+        if (fragment is Fragment) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_fragment, fragment, "dynamic_fragment")
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack("dynamic_fragment")
+                .commit()
         }
     }
 
