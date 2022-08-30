@@ -27,7 +27,7 @@ jobs:
           command: ./gradlew build --stacktrace | tee my-logs.txt
       - codecov/upload:
           file:  './coverage/clover.xml'
-          token: 01db89b7-2f5b-45ab-a728-d26a196cb6a1
+          token: CODECOV_TOKEN
       - store_artifacts: 
           path: app/build/reports
           destination: reports
