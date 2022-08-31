@@ -25,7 +25,8 @@ jobs:
       - run:
           name: Run Build
           command: ./gradlew build --stacktrace | tee my-logs.txt
-      - codecov/upload
+      - codecov/upload:
+          file: coverage/coverage-tes.json
       - store_artifacts: 
           path: app/build/reports
           destination: reports
