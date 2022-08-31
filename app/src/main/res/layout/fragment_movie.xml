@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="cat_empty.json"
+        app:lottie_fileName="empty.json"
         app:lottie_loop="true"/>
     <TextView
         android:id="@+id/empty_text"
