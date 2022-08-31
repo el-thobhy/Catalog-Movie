@@ -4,18 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".movies.FavoriteMovieFragment">
-
-    <ImageView
-        android:id="@+id/image_empty"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:contentDescription="@string/image_empty"
-        android:src="@mipmap/empty_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".moviestv.FavoriteMovieTvFragment">
 
     <TextView
         android:id="@+id/empty_text"
@@ -23,9 +12,9 @@
         android:layout_height="wrap_content"
         android:text="@string/empty_data"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/image_empty"
-        app:layout_constraintStart_toStartOf="@+id/image_empty"
-        app:layout_constraintTop_toBottomOf="@+id/image_empty" />
+        app:layout_constraintEnd_toEndOf="@+id/not_found"
+        app:layout_constraintStart_toStartOf="@+id/not_found"
+        app:layout_constraintTop_toBottomOf="@+id/not_found" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite_movies"
@@ -36,5 +25,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_list" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/not_found"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="empty.json"
+        app:lottie_loop="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

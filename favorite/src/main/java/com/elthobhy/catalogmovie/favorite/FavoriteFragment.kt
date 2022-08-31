@@ -30,7 +30,7 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        viewPagerAdapter = ViewPagerAdapter(requireActivity())
+        viewPagerAdapter = ViewPagerAdapter(requireActivity(), lifecycle)
         viewPager2 = binding.viewPager
         viewPager2.adapter = viewPagerAdapter
 
@@ -51,6 +51,10 @@ class FavoriteFragment : Fragment() {
         loadKoinModules(favoriteModule)
     }
 
+    override fun onDestroyView() {
+        viewPager2.adapter = null
+        super.onDestroyView()
+    }
 
     override fun onDestroy() {
         super.onDestroy()

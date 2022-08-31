@@ -8,6 +8,8 @@ import com.elthobhy.catalogmovie.core.data.remote.RemoteDataSource
 import com.elthobhy.catalogmovie.core.data.remote.networking.ApiConfig
 import com.elthobhy.catalogmovie.core.domain.repository.RepositoryInterface
 import com.elthobhy.catalogmovie.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -24,9 +26,13 @@ val repository = module {
 val database = module {
     factory { get<Database>().dao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("passphrase".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             Database::class.java, "movie_db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
