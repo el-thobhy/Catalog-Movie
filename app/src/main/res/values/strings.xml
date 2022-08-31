@@ -13,5 +13,6 @@
     <string name="detail">Detail</string>
     <string name="search">Search</string>
     <string name="splash_screen">Splash Screen</string>
+    <string name="empty_data">Empty Data</string>
 
 </resources>

@@ -52,7 +52,7 @@ class FavoriteMovieTvFragment(private val isMovie: Boolean) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapterList = AdapterList()
-        binding.imageEmpty.visibility = View.GONE
+        binding.notFound.visibility = View.GONE
         binding.emptyText.visibility = View.GONE
         setList()
         showRv()
@@ -117,10 +117,10 @@ class FavoriteMovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
     private val observerMovieTvShow = Observer<List<DomainModel>> {
         if (it.isNullOrEmpty()) {
-            binding.imageEmpty.visibility = View.VISIBLE
+            binding.notFound.visibility = View.VISIBLE
             binding.emptyText.visibility = View.VISIBLE
         } else {
-            binding.imageEmpty.visibility = View.GONE
+            binding.notFound.visibility = View.GONE
             binding.emptyText.visibility = View.GONE
         }
         adapterList.submitList(it)

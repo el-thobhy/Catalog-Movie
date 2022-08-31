@@ -157,12 +157,18 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
             when (it) {
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.notFound.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
                 }
                 is Resource.Success -> {
+                    binding.notFound.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
                     binding.progressBar.visibility = View.GONE
                     adapterList.submitList(it.data)
                 }
                 is Resource.Error -> {
+                    binding.notFound.visibility = View.VISIBLE
+                    binding.emptyText.visibility = View.VISIBLE
                     dialogError = showDialogError(requireContext(), it.message)
                     dialogError.show()
                     binding.progressBar.visibility = View.GONE
