@@ -25,7 +25,6 @@
         android:text="@string/date"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
-        android:transitionName="dateTransition"
         app:layout_constraintBottom_toBottomOf="@id/round_image"
         app:layout_constraintStart_toEndOf="@id/round_image"
         app:layout_constraintTop_toBottomOf="@id/title" />
@@ -40,7 +39,6 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/original_title"
         android:textSize="12sp"
-        android:transitionName="originalTitleTransition"
         app:layout_constraintTop_toBottomOf="@id/poster_image" />
 
     <TextView
@@ -56,7 +54,6 @@
         android:text="@string/lorem"
         android:textColor="@android:color/darker_gray"
         android:textSize="11sp"
-        android:transitionName="overviewTransition"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tv_original_title"
         app:layout_constraintStart_toStartOf="@id/tv_original_title"
@@ -70,7 +67,6 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/title"
         android:textSize="14sp"
-        android:transitionName="titleTransition"
         app:layout_constraintBottom_toTopOf="@id/tv_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/round_image"
@@ -84,7 +80,6 @@
         android:layout_marginStart="16dp"
         android:contentDescription="@string/image_poster"
         android:src="@mipmap/bird_thumbnail"
-        android:transitionName="imageTransition"
         app:layout_constraintBottom_toTopOf="@+id/tv_original_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

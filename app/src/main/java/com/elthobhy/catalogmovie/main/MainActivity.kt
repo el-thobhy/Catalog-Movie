@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.elthobhy.catalogmovie.R
-import com.elthobhy.catalogmovie.core.utils.removeActivityFromTransitionManager
 import com.elthobhy.catalogmovie.databinding.ActivityMainBinding
 import com.elthobhy.catalogmovie.moviestv.MovieTvFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -57,8 +56,4 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        removeActivityFromTransitionManager(this)
-    }
 }

@@ -1,14 +1,11 @@
 package com.elthobhy.catalogmovie.moviestv
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -111,18 +108,9 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
 
     internal fun setDetail(data: DomainModel, itemBinding: ItemListBinding) {
         itemBinding.apply {
-            val optionCompat: ActivityOptionsCompat =
-                ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    context as Activity,
-                    Pair(title, "titleTransition"),
-                    Pair(tvDate, "dateTransition"),
-                    Pair(tvOriginalTitle, "originalTitleTransition"),
-                    Pair(tvOverview, "overviewTransition"),
-                    Pair(posterImage, "imageTransition")
-                )
             val intent = Intent(activity, DetailActivity::class.java)
             intent.putExtra(Constants.DATA, data)
-            startActivity(intent, optionCompat.toBundle())
+            startActivity(intent)
         }
     }
 

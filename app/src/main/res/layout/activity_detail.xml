@@ -62,7 +62,6 @@
             android:fontFamily="@font/poppins_bold"
             android:text="@string/title"
             android:textSize="20sp"
-            android:transitionName="titleTransition"
             app:layout_constraintEnd_toStartOf="@id/fab_favorite"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_backdrop" />
@@ -74,7 +73,6 @@
             android:fontFamily="@font/poppins_light"
             android:text="@string/release_date"
             android:textSize="12sp"
-            android:transitionName="dateTransition"
             app:layout_constraintStart_toStartOf="@id/title_detail"
             app:layout_constraintTop_toBottomOf="@id/title_detail" />
 
@@ -139,7 +137,6 @@
             android:paddingBottom="20dp"
             android:text="@string/lorem"
             android:textSize="12sp"
-            android:transitionName="overviewTransition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_overview" />
@@ -190,7 +187,6 @@
             android:layout_height="230dp"
             android:contentDescription="@string/image_backdrop"
             android:src="@mipmap/bird_thumbnail"
-            android:transitionName="imageTransition"
             app:layout_constraintBottom_toTopOf="@id/title_detail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
