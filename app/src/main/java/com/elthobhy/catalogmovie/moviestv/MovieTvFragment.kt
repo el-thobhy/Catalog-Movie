@@ -21,7 +21,6 @@ import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.ui.AdapterList
 import com.elthobhy.catalogmovie.core.utils.Constants
 import com.elthobhy.catalogmovie.core.utils.showDialogError
-import com.elthobhy.catalogmovie.core.utils.showDialogLoading
 import com.elthobhy.catalogmovie.databinding.FragmentMovieBinding
 import com.elthobhy.catalogmovie.detail.DetailActivity
 import com.elthobhy.catalogmovie.main.MainActivity
@@ -42,7 +41,6 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
     private lateinit var adapterList: AdapterList
     private lateinit var searchView: MaterialSearchView
     private lateinit var dialogError: AlertDialog
-    private lateinit var dialogLoading: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +55,6 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapterList = AdapterList()
         dialogError = showDialogError(requireContext())
-        dialogLoading = showDialogLoading(requireContext())
         setList()
         searchList()
         showRv()
@@ -159,16 +156,16 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
         if (it != null) {
             when (it) {
                 is Resource.Loading -> {
-                    dialogLoading.show()
+                    binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Success -> {
-                    dialogLoading.dismiss()
+                    binding.progressBar.visibility = View.GONE
                     adapterList.submitList(it.data)
                 }
                 is Resource.Error -> {
                     dialogError = showDialogError(requireContext(), it.message)
                     dialogError.show()
-                    dialogLoading.dismiss()
+                    binding.progressBar.visibility = View.GONE
                 }
             }
         }
@@ -177,7 +174,6 @@ class MovieTvFragment(private val isMovie: Boolean) : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        dialogLoading.dismiss()
         dialogError.dismiss()
     }
 
