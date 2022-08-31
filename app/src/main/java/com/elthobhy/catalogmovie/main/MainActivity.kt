@@ -21,20 +21,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigationChange(MovieTvFragment(true))
+        navigationChange(MovieTvFragment())
         binding.bottomNav.setNavigationChangeListener { _, position ->
             when (position) {
                 0 -> navigationChange(MovieTvFragment(true))
                 1 -> navigationChange(MovieTvFragment(false))
-                2 -> moveToFavoriteFragment()
+                2 -> navigationChange(featureFragment())
             }
-        }
-    }
-
-    private fun moveToFavoriteFragment() {
-        val fragment = featureFragment()
-        if (fragment != null) {
-            navigationChange(fragment)
         }
     }
 
@@ -48,12 +41,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigationChange(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container_fragment, fragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
+    private fun navigationChange(fragment: Fragment?) {
+        if (fragment != null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_fragment, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit()
+        }
     }
 
 }
