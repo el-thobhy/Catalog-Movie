@@ -1,5 +1,6 @@
 package com.elthobhy.catalogmovie.core.domain.usecase
 
+import androidx.lifecycle.LiveData
 import com.elthobhy.catalogmovie.core.data.Resource
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import kotlinx.coroutines.flow.Flow
@@ -13,5 +14,6 @@ interface UseCase {
     fun getSearchFavoriteTvShows(search: String): Flow<List<DomainModel>>
     fun getFavoriteMovie(): Flow<List<DomainModel>>
     fun getFavoriteTvShow(): Flow<List<DomainModel>>
+    fun getDetailById(id: Int): LiveData<DomainModel>
     fun setFavoriteMovie(movie: DomainModel, state: Boolean)
 }

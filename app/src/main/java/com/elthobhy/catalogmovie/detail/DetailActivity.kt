@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -28,11 +28,27 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         val intent = intent.getParcelableExtra<DomainModel>(Constants.DATA)
         if (intent != null) {
-            showDetail(intent)
+            detailViewModel.getDetailById(intent.id).observe(this) {
+                showDetail(it)
+                setActionBookmark(it)
+            }
         }
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.detail)
+    }
+
+    private fun setActionBookmark(intent: DomainModel) {
+        binding.fabFavorite.setOnClickListener {
+            if (intent.favorite) {
+                Toast.makeText(this, getString(R.string.remove_from_favorite), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                Toast.makeText(this, getString(R.string.added_to_favorite), Toast.LENGTH_SHORT)
+                    .show()
+            }
+            detailViewModel.setFavoriteMovie(intent)
+        }
     }
 
 
@@ -70,31 +86,15 @@ class DetailActivity : AppCompatActivity() {
             starCount.text = intent.voteAverage.toString()
             overviewDetail.text = intent.overview
 
-            var favorite = intent.favorite
-            setFavoriteState(favorite)
-            fabFavorite.setOnClickListener {
-                favorite = !favorite
-                detailViewModel.setFavoriteMovie(intent, favorite)
-                setFavoriteState(favorite)
-            }
+            setFavoriteState(intent.favorite)
         }
     }
 
     private fun setFavoriteState(favorite: Boolean) {
         if (favorite) {
-            binding.fabFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    this,
-                    R.drawable.ic_baseline_bookmark_24
-                )
-            )
+            binding.fabFavorite.setImageResource(R.drawable.ic_baseline_bookmark_24)
         } else {
-            binding.fabFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    this,
-                    R.drawable.ic_baseline_bookmark_border_24
-                )
-            )
+            binding.fabFavorite.setImageResource(R.drawable.ic_baseline_bookmark_border_24)
         }
     }
 

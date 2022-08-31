@@ -14,5 +14,7 @@
     <string name="search">Search</string>
     <string name="splash_screen">Splash Screen</string>
     <string name="empty_data">Empty Data</string>
+    <string name="remove_from_favorite">Remove From Favorite</string>
+    <string name="added_to_favorite">Added to Favorite</string>
 
 </resources>

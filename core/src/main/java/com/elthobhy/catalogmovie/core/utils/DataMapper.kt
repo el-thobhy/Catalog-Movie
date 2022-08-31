@@ -47,6 +47,24 @@ object DataMapper {
         )
     }
 
+    fun mapDataEntityToDomain(input: Entity): DomainModel {
+        return DomainModel(
+            title = input.title,
+            voteCount = input.voteCount,
+            voteAverage = input.voteAverage,
+            releaseDate = input.releaseDate,
+            posterPath = input.posterPath,
+            popularity = input.popularity,
+            overview = input.overview,
+            id = input.id,
+            isTvShows = input.isTvShow,
+            favorite = input.isFavorite,
+            original_title = input.originalTitle,
+            backdrop_path = input.backdrop_path,
+            originalLanguage = input.originalLanguage,
+        )
+    }
+
     fun mapShowResponseToEntity(input: List<TvShowResponseItem>): List<Entity> {
         val output = ArrayList<Entity>()
         input.map {

@@ -1,5 +1,7 @@
 package com.elthobhy.catalogmovie.core.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import com.elthobhy.catalogmovie.core.data.local.LocalDataSource
 import com.elthobhy.catalogmovie.core.data.remote.RemoteDataSource
 import com.elthobhy.catalogmovie.core.data.remote.networking.ApiResponse
@@ -78,6 +80,12 @@ class Repository(
     override fun getSearchFavoriteTvShow(search: String): Flow<List<DomainModel>> {
         return localDataSource.getSearchFavoriteTvShow(search).map {
             DataMapper.mapEntityToDomain(it)
+        }
+    }
+
+    override fun getDetailById(id: Int): LiveData<DomainModel> {
+        return localDataSource.getDetailById(id).map {
+            DataMapper.mapDataEntityToDomain(it)
         }
     }
 

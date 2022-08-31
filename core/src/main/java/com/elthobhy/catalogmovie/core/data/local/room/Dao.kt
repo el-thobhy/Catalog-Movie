@@ -1,5 +1,6 @@
 package com.elthobhy.catalogmovie.core.data.local.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.Dao
 import com.elthobhy.catalogmovie.core.data.local.entity.Entity
@@ -30,6 +31,9 @@ interface Dao {
 
     @Query("SELECT * FROM entity WHERE isTvShow = 1 AND isFavorite = 1")
     fun getFavoriteTvShow(): Flow<List<Entity>>
+
+    @Query("SELECT * FROM entity WHERE id = :id")
+    fun getDetailById(id: Int): LiveData<Entity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entity: List<Entity>)
