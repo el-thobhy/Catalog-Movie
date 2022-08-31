@@ -2,6 +2,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="movies">Movies</string>
     <string name="tv_show">Tv Show</string>
-    <string name="image_empty">Image empty</string>
     <string name="empty_data">Empty Data</string>
 </resources>
