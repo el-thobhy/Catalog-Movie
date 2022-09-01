@@ -51,4 +51,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        when (binding.bottomNav.currentActiveItemPosition) {
+            0 -> navigationChange(MovieTvFragment(true))
+            1 -> navigationChange(MovieTvFragment(false))
+            2 -> navigationChange(featureFragment())
+        }
+    }
+
 }
