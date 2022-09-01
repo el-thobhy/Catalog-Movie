@@ -23,11 +23,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         navigationChange(MovieTvFragment())
         binding.bottomNav.setNavigationChangeListener { _, position ->
-            when (position) {
-                0 -> navigationChange(MovieTvFragment(true))
-                1 -> navigationChange(MovieTvFragment(false))
-                2 -> navigationChange(featureFragment())
-            }
+            setLayout(position)
+        }
+    }
+
+    private fun setLayout(position: Int) {
+        when (position) {
+            0 -> navigationChange(MovieTvFragment(true))
+            1 -> navigationChange(MovieTvFragment(false))
+            2 -> navigationChange(featureFragment())
         }
     }
 
@@ -53,11 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        when (binding.bottomNav.currentActiveItemPosition) {
-            0 -> navigationChange(MovieTvFragment(true))
-            1 -> navigationChange(MovieTvFragment(false))
-            2 -> navigationChange(featureFragment())
-        }
+        setLayout(binding.bottomNav.currentActiveItemPosition)
     }
 
 }
