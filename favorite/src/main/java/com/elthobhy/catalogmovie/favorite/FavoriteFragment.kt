@@ -13,7 +13,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.core.context.loadKoinModules
-import org.koin.core.context.unloadKoinModules
 
 
 @FlowPreview
@@ -47,7 +46,6 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         loadKoinModules(favoriteModule)
     }
 
