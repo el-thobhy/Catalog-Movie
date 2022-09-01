@@ -53,12 +53,7 @@ class FavoriteFragment : Fragment() {
 
     override fun onDestroyView() {
         viewPager2.adapter = null
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
         _binding = null
-        unloadKoinModules(favoriteModule)
+        super.onDestroyView()
     }
 }
