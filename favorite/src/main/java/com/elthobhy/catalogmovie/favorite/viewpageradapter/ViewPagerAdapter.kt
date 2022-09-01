@@ -16,6 +16,11 @@ class ViewPagerAdapter(fa: FragmentActivity, lifecycle: Lifecycle) :
     override fun getItemCount(): Int = Constants.NUM_PAGE
 
     override fun createFragment(position: Int): Fragment {
+        return setLayout(position)
+
+    }
+
+    fun setLayout(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = FavoriteMovieTvFragment(true)

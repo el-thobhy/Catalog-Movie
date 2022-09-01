@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigationChange(MovieTvFragment())
+        setLayout(binding.bottomNav.currentActiveItemPosition)
         binding.bottomNav.setNavigationChangeListener { _, position ->
             setLayout(position)
         }
