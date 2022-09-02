@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.elthobhy.catalogmovie.di.favoriteModule
 import com.elthobhy.catalogmovie.favorite.databinding.FragmentFavoriteBinding
 import com.elthobhy.catalogmovie.favorite.viewpageradapter.ViewPagerAdapter
@@ -13,7 +12,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.core.context.loadKoinModules
-import org.koin.core.context.unloadKoinModules
 
 
 @FlowPreview
@@ -22,7 +20,6 @@ class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding as FragmentFavoriteBinding
-    private lateinit var viewPager2: ViewPager2
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     override fun onCreateView(
@@ -31,8 +28,7 @@ class FavoriteFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         viewPagerAdapter = ViewPagerAdapter(requireActivity(), lifecycle)
-        viewPager2 = binding.viewPager
-        viewPager2.adapter = viewPagerAdapter
+        binding.viewPager.adapter = viewPagerAdapter
 
         val tabTitle = arrayOf(
             R.string.movies,
@@ -47,18 +43,17 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         loadKoinModules(favoriteModule)
     }
 
-    override fun onDestroyView() {
-        viewPager2.adapter = null
-        super.onDestroyView()
+    override fun onResume() {
+        super.onResume()
+        viewPagerAdapter.setLayout(binding.viewPager.currentItem)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        binding.viewPager.adapter = null
         _binding = null
-        unloadKoinModules(favoriteModule)
+        super.onDestroyView()
     }
 }

@@ -1,5 +1,6 @@
 package com.elthobhy.catalogmovie.core.domain.usecase
 
+import androidx.lifecycle.LiveData
 import com.elthobhy.catalogmovie.core.data.Resource
 import com.elthobhy.catalogmovie.core.domain.model.DomainModel
 import com.elthobhy.catalogmovie.core.domain.repository.RepositoryInterface
@@ -22,6 +23,9 @@ class RepositoryInteract(private val repository: RepositoryInterface) : UseCase 
 
     override fun getFavoriteMovie(): Flow<List<DomainModel>> = repository.getFavoriteMovies()
     override fun getFavoriteTvShow(): Flow<List<DomainModel>> = repository.getFavoriteTvShow()
+    override fun getDetailById(id: Int): LiveData<DomainModel> =
+        repository.getDetailById(id)
+
 
     override fun setFavoriteMovie(movie: DomainModel, state: Boolean) =
         repository.setFavoriteMovies(movie, state)

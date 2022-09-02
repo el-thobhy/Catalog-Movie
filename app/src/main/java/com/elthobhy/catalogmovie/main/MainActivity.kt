@@ -21,20 +21,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigationChange(MovieTvFragment(true))
+        setLayout(binding.bottomNav.currentActiveItemPosition)
         binding.bottomNav.setNavigationChangeListener { _, position ->
-            when (position) {
-                0 -> navigationChange(MovieTvFragment(true))
-                1 -> navigationChange(MovieTvFragment(false))
-                2 -> moveToFavoriteFragment()
-            }
+            setLayout(position)
         }
     }
 
-    private fun moveToFavoriteFragment() {
-        val fragment = featureFragment()
-        if (fragment != null) {
-            navigationChange(fragment)
+    private fun setLayout(position: Int) {
+        when (position) {
+            0 -> navigationChange(MovieTvFragment(true))
+            1 -> navigationChange(MovieTvFragment(false))
+            2 -> navigationChange(featureFragment())
         }
     }
 
@@ -48,12 +45,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigationChange(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container_fragment, fragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
+    private fun navigationChange(fragment: Fragment?) {
+        if (fragment != null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_fragment, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setLayout(binding.bottomNav.currentActiveItemPosition)
     }
 
 }
