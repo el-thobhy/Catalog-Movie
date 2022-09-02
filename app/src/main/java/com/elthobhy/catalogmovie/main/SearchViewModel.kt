@@ -31,23 +31,5 @@ class SearchViewModel(private val useCase: UseCase) : ViewModel() {
         .flatMapLatest {
             useCase.getSearchTvShows(it)
         }.asLiveData()
-    val movieFavoriteResult = queryChannel
-        .debounce(300)
-        .distinctUntilChanged()
-        .filter {
-            it.trim().isNotEmpty()
-        }
-        .flatMapLatest {
-            useCase.getSearchFavoriteMovies(it)
-        }.asLiveData()
 
-    val tvShowFavoriteResult = queryChannel
-        .debounce(300)
-        .distinctUntilChanged()
-        .filter {
-            it.trim().isNotEmpty()
-        }
-        .flatMapLatest {
-            useCase.getSearchFavoriteTvShows(it)
-        }.asLiveData()
 }

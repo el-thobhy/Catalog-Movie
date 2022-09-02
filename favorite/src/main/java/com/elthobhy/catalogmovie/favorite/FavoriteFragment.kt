@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.elthobhy.catalogmovie.di.favoriteModule
 import com.elthobhy.catalogmovie.favorite.databinding.FragmentFavoriteBinding
-import com.elthobhy.catalogmovie.favorite.moviestv.FavoriteMovieTvFragment
 import com.elthobhy.catalogmovie.favorite.viewpageradapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.ExperimentalCoroutinesApi

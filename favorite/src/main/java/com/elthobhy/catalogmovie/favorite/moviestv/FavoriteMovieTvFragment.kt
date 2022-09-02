@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class FavoriteMovieTvFragment(private val isMovie: Boolean = true) : Fragment() {
+class FavoriteMovieTvFragment(private var isMovie: Boolean = true) : Fragment() {
 
     private var _binding: FragmentFavoriteMovieBinding? = null
     private val binding get() = _binding as FragmentFavoriteMovieBinding
