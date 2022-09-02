@@ -54,10 +54,4 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        setLayout(binding.bottomNav.currentActiveItemPosition)
-    }
-
 }

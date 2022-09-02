@@ -88,6 +88,7 @@ class FavoriteMovieTvFragment(private var isMovie: Boolean = true) : Fragment() 
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvFavoriteMovies.adapter = null
         _binding = null
     }
 }
