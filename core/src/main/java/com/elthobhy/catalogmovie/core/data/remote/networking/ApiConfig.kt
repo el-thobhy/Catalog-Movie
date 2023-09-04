@@ -12,7 +12,7 @@ class ApiConfig {
         fun getApiService(): ApiService {
             val hostname = "api.themoviedb.org"
             val certificatePinner = CertificatePinner.Builder()
-                .add(hostname, "sha256/p+WeEuGncQbjSKYPSzAaKpF/iLcOjFLuZubtsXupYSI=")
+                .add(hostname, "sha256/5VLcahb6x4EvvFrCF2TePZulWqrLHS2jCg9Ywv6JHog")
                 .build()
             val client = OkHttpClient.Builder()
                 .certificatePinner(certificatePinner)
